@@ -1,0 +1,154 @@
+:root {
+  --primary-color: #f07cc3;
+  --secondary-color: whitesmoke;
+  --font: "Rubik", sans-serif;
+}
+
+body:has(.active-login) {
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f0f0;
+  overflow: hidden;
+}
+.overlay-login {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: hsla(0, 0%, 0%, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 15;
+  -webkit-transition: 0.5s ease;
+  -o-transition: 0.5s ease;
+  transition: 0.5s ease;
+  font-family: "Poppins", sans-serif;
+}
+.active-login {
+  opacity: 1;
+  pointer-events: auto;
+}
+.login-error-message {
+  width: 100%;
+  font-size: 10px;
+  color: red;
+  font-family: var(--font);
+  background-color: var(--secondary-color);
+  text-align: center;
+  margin-top: 4px;
+}
+.login-container {
+  background-color: #fff;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  max-width: 60%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 7%;
+  text-align: center;
+}
+
+.login-container h1 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+}
+
+.login-form {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.login-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 5px 0px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  height: 30px;
+  font-size: 15px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+}
+.login-form input:focus {
+  outline: none;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 2%;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  margin-top: 6%;
+  box-shadow: 2px 2px 2px rgb(0, 0, 0, 0.27);
+}
+
+.social-login p {
+  margin-bottom: 10px;
+}
+
+.social-login .login-container1 {
+  width: 97%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-container1 .google-login {
+  color: white;
+  max-width: fit-content;
+  display: inline-block;
+  margin-right: 4%;
+  padding: 0;
+  border: none;
+  vertical-align: middle; /* Add this line */
+}
+.google-login img {
+  height: 30px;
+  width: 30px;
+}
+.login-container1 .apple-login {
+  color: white;
+  max-width: fit-content;
+  display: inline-block;
+  margin-left: 4%;
+  border: none;
+  vertical-align: middle; /* Add this line */
+}
+.social-login .apple-login img {
+  height: 30px;
+  width: 24.37px;
+}
+.signup-link {
+  font-size: small;
+}
+.signup-link a {
+  display: inline-block;
+}
+/* Media Queries */
+@media screen and (max-width: 991px) {
+  /* Adjust styles for medium screens */
+  .login-container {
+    padding: 15px;
+    width: 100%;
+    max-width: 80%;
+  }
+}
+@media screen and (max-width: 767px) {
+  /* Adjust styles for small screens */
+  .login-container {
+    padding: 10px;
+  }
+}
