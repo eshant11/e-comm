@@ -2,35 +2,68 @@ import { useEffect, useState } from "react";
 import { SearchSharp } from "react-ionicons";
 import { ProductInfo } from "../interface";
 import _ from "lodash"; // import Lodash
+import Product from "../Product/Product";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { RootState } from "../../app/store";
+import { fetchProductsBySearch } from "../../Redux/Reducer/searchedProduct";
 
 const SearchFilter = () => {
+  const dispatch = useAppDispatch();
+
+  const searchedList = useAppSelector(
+    (state: RootState) => state.search.searchResults
+  );
   const [searchProduct, setSearchProduct] = useState<string>("");
-  const [products, setProducts] = useState<ProductInfo[]>([]);
+  // const [products, setProducts] = useState<ProductInfo[]>([]);
   const [searchResults, setSearchResults] = useState<ProductInfo[] | undefined>(
     []
   );
 
   //to fecth all the products
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await fetch("http://localhost:8080/api/search");
-        const data: ProductInfo[] = await response.json();
-        setProducts(data);
-      } catch (error) {
-        console.error("Failed to fetch products:", error);
-      }
-    };
-    fetchProducts();
-    if (searchProduct !== "") {
-      console.log(searchResults);
+    if (searchProduct) {
+      dispatch(fetchProductsBySearch(searchProduct)).then((data) =>
+        console.log(data)
+      );
     }
-  }, [searchResults]);
+  }, [dispatch]);
+  // useEffect(() => {
+  //   const fetchProducts = async () => {
+  //     try {
+  //       const response = await fetch("http://localhost:8080/api/search");
+  //       const data: ProductInfo[] = await response.json();
+  //       setProducts(data);
+  //     } catch (error) {
+  //       console.error("Failed to fetch products:", error);
+  //     }
+  //   };
+  //   fetchProducts();
+  //   if (searchProduct !== "") {
+  //     console.log(searchResults);
+  //   }
+  // }, [searchResults]);
 
+  // const handleSearch = () => {
+  //   // Use Lodash's filter and includes functions for case-insensitive search
+  //   const results: ProductInfo[] | undefined = _.filter(
+  //     products,
+  //     (product: ProductInfo) =>
+  //       _.includes(
+  //         product.productName && product.productName.toLowerCase(),
+  //         searchProduct.toLowerCase()
+  //       ) ||
+  //       _.includes(
+  //         product.productCategory && product.productCategory.toLowerCase(),
+  //         searchProduct.toLowerCase()
+  //       )
+  //   );
+  //   setSearchResults(results);
+  //   // console.log(results);
+  // };
   const handleSearch = () => {
     // Use Lodash's filter and includes functions for case-insensitive search
     const results: ProductInfo[] | undefined = _.filter(
-      products,
+      searchedList,
       (product: ProductInfo) =>
         _.includes(
           product.productName && product.productName.toLowerCase(),
@@ -42,7 +75,7 @@ const SearchFilter = () => {
         )
     );
     setSearchResults(results);
-    // console.log(results);
+    console.log(results);
   };
 
   return (
@@ -56,7 +89,6 @@ const SearchFilter = () => {
           value={searchProduct}
           onChange={(e) => setSearchProduct(e.target.value)}
         />
-
         <button
           className="search-btn"
           onClick={() => {
