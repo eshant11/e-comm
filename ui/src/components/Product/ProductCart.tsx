@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import { ProductInfo } from "../interface";
 interface ProductCartProps {
   productDescription: ProductInfo;
@@ -8,23 +9,23 @@ const ProductCart = (props: ProductCartProps) => {
 
   return (
     <div className="showcase">
-      <a href="#" className="showcase-img-box">
+      <NavLink to="#" className="showcase-img-box">
         <img
           src={productDescription.imageUrl}
           alt="sweet"
           width="70"
           className="showcase-img"
         />
-      </a>
+      </NavLink>
 
       <div className="showcase-content">
-        <a href="#">
+        <NavLink to="#">
           <h4 className="showcase-title">{productDescription.productName}</h4>
-        </a>
+        </NavLink>
 
-        <a href="#" className="showcase-category">
+        <NavLink to="#" className="showcase-category">
           {productDescription.productCategory}
-        </a>
+        </NavLink>
 
         <div className="price-box">
           <p className="price">₹{productDescription.price}</p>
