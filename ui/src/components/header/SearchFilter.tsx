@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { SearchSharp } from "react-ionicons";
 import { ProductInfo } from "../interface";
-import _ from "lodash"; // import Lodash
-import Product from "../Product/Product";
+import _, { debounce } from "lodash"; // import Lodash
+// import Product from "../Product/Product";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { RootState } from "../../app/store";
 import { fetchProductsBySearch } from "../../Redux/Reducer/searchedProduct";
@@ -14,69 +14,33 @@ const SearchFilter = () => {
     (state: RootState) => state.search.searchResults
   );
   const [searchProduct, setSearchProduct] = useState<string>("");
-  // const [products, setProducts] = useState<ProductInfo[]>([]);
-  const [searchResults, setSearchResults] = useState<ProductInfo[] | undefined>(
-    []
-  );
+  const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
 
-  //to fecth all the products
+  // const debouncedFetch = debounce((searchProduct) => {
+  //   dispatch(fetchProductsBySearch(searchProduct));
+  // }, 3000); // Debounce the search by 500ms
+
+  const handleDebounce = (searchProduct: string) => {
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+    }
+    if (searchProduct.trim() !== "" || searchedList == null) {
+      const newTimeoutId = setTimeout(() => {
+        dispatch(fetchProductsBySearch(searchProduct));
+      }, 2000);
+      setTimeoutId(newTimeoutId);
+    }
+  };
+
   useEffect(() => {
     if (searchProduct) {
-      dispatch(fetchProductsBySearch(searchProduct)).then((data) =>
-        console.log(data)
-      );
+      handleDebounce(searchProduct);
     }
-  }, [dispatch]);
-  // useEffect(() => {
-  //   const fetchProducts = async () => {
-  //     try {
-  //       const response = await fetch("http://localhost:8080/api/search");
-  //       const data: ProductInfo[] = await response.json();
-  //       setProducts(data);
-  //     } catch (error) {
-  //       console.error("Failed to fetch products:", error);
-  //     }
-  //   };
-  //   fetchProducts();
-  //   if (searchProduct !== "") {
-  //     console.log(searchResults);
-  //   }
-  // }, [searchResults]);
+  }, [searchProduct]);
 
-  // const handleSearch = () => {
-  //   // Use Lodash's filter and includes functions for case-insensitive search
-  //   const results: ProductInfo[] | undefined = _.filter(
-  //     products,
-  //     (product: ProductInfo) =>
-  //       _.includes(
-  //         product.productName && product.productName.toLowerCase(),
-  //         searchProduct.toLowerCase()
-  //       ) ||
-  //       _.includes(
-  //         product.productCategory && product.productCategory.toLowerCase(),
-  //         searchProduct.toLowerCase()
-  //       )
-  //   );
-  //   setSearchResults(results);
-  //   // console.log(results);
-  // };
-  const handleSearch = () => {
-    // Use Lodash's filter and includes functions for case-insensitive search
-    const results: ProductInfo[] | undefined = _.filter(
-      searchedList,
-      (product: ProductInfo) =>
-        _.includes(
-          product.productName && product.productName.toLowerCase(),
-          searchProduct.toLowerCase()
-        ) ||
-        _.includes(
-          product.productCategory && product.productCategory.toLowerCase(),
-          searchProduct.toLowerCase()
-        )
-    );
-    setSearchResults(results);
-    console.log(results);
-  };
+  useEffect(() => {
+    console.log(searchedList);
+  }, [searchedList]);
 
   return (
     <>
@@ -89,12 +53,7 @@ const SearchFilter = () => {
           value={searchProduct}
           onChange={(e) => setSearchProduct(e.target.value)}
         />
-        <button
-          className="search-btn"
-          onClick={() => {
-            handleSearch();
-          }}
-        >
+        <button className="search-btn">
           <SearchSharp color={""} title={""} />
         </button>
       </div>

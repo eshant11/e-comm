@@ -39,7 +39,7 @@ app.post("/api/login", authController.login);
 
 // Define product routes
 //get all products
-app.get("/api/search", productController.getAllProducts);
+app.get("/api/search", productController.searchProducts);
 
 //sweet
 app.get("/api/product/sweet", productController.getSweetProducts);

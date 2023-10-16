@@ -52,9 +52,9 @@ const ProductDeatils = () => {
               </p>
 
               <div className="price-box">
-                <p className="price">{selectedProduct?.price}</p>
+                <p className="price">₹{selectedProduct?.price}</p>
 
-                <del>{selectedProduct?.offer}</del>
+                <del>₹{selectedProduct?.offer}</del>
               </div>
 
               <button className="add-cart-btn">add to cart</button>

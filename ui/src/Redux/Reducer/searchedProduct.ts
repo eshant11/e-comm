@@ -1,5 +1,5 @@
 // searchSlice.ts
-import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { ProductInfo } from "../../components/interface";
 
@@ -9,7 +9,6 @@ interface SearchState {
   loading: boolean;
   error: string | undefined;
 }
-
 // Define an initial state
 const initialState: SearchState = {
   searchResults: [],

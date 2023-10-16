@@ -1,16 +1,34 @@
 import Product from "../model/product";
 import { Request, Response } from "express";
 
-// Get All products
-export const getAllProducts = async (req: Request, res: Response) => {
+// Get All products based on search
+export const searchProducts = async (req: Request, res: Response) => {
   try {
-    const products = await Product.find();
-    console.log(products.length);
-    res.json(products);
+    // Get the search query from the query parameters
+    const searchQuery = req.query.q;
+
+    // If there is no search query, return all products
+    if (!searchQuery) {
+      const allProducts = await Product.find();
+      return res.json(allProducts);
+    }
+
+    // Use a regex to search for products with a name or category that includes the search query
+    else {
+      const searchResults = await Product.find({
+        $or: [
+          { productName: { $regex: searchQuery, $options: "i" } },
+          { productCategory: { $regex: searchQuery, $options: "i" } },
+        ],
+      });
+
+      res.json(searchResults);
+    }
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
   }
 };
+
 // Get Sweet products
 export const getSweetProducts = async (req: Request, res: Response) => {
   try {

@@ -75,7 +75,7 @@ const Header = () => {
           <div className="header-top-actions">
             <select name="currency">
               <option value="usd">USD &#36;</option>
-              <option value="eur">INR ₹;</option>
+              <option value="eur">INR ₹</option>
             </select>
 
             <select name="language">
