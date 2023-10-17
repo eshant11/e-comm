@@ -6,15 +6,17 @@ import { RootState } from "../../app/store";
 import { ProductInfo } from "../interface";
 
 const ProductDeatils = () => {
-  const selectedProductId = useParams();
+  // to access the product id from url route
+  const { selectedProductId, category } = useParams();
 
   const productList = useAppSelector(
     (state: RootState) => state.products.productList
   );
   const selectedProduct: ProductInfo | undefined = productList.find(
-    (product) => product._id === selectedProductId.productId
+    (product) =>
+      product._id === selectedProductId || product.productCategory === category
   );
-  // console.log(selectedProduct?.productName);
+  console.log(selectedProduct);
 
   return (
     <div className="product-featured">

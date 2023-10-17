@@ -78,7 +78,10 @@ const Product = (props: ProductProps) => {
             <div className="showcase-wrapper has-scrollbar">
               <div className="showcase-container">
                 {newArrivalList.map((product, index) => (
-                  <NavLink to={`/product/${product._id}`} key={index}>
+                  <NavLink
+                    to={`/product/${product.productCategory}/${product.productName}`}
+                    key={index}
+                  >
                     <ProductCart productDescription={product} key={index} />
                   </NavLink>
                 ))}
@@ -92,7 +95,10 @@ const Product = (props: ProductProps) => {
             <div className="showcase-wrapper has-scrollbar">
               <div className="showcase-container">
                 {trendingList.map((product, index) => (
-                  <NavLink to={`/product/${product._id}`} key={index}>
+                  <NavLink
+                    to={`/product/${product.productCategory}/${product.productName}`}
+                    key={index}
+                  >
                     <ProductCart productDescription={product} />
                   </NavLink>
                 ))}
@@ -106,7 +112,10 @@ const Product = (props: ProductProps) => {
             <div className="showcase-wrapper has-scrollbar">
               <div className="showcase-container">
                 {topRatedList.map((product, index) => (
-                  <NavLink to={`/product/${product._id}`} key={index}>
+                  <NavLink
+                    to={`/product/${product.productCategory}/${product.productName}`}
+                    key={index}
+                  >
                     <ProductCart productDescription={product} key={index} />
                   </NavLink>
                 ))}
