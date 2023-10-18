@@ -79,7 +79,7 @@ const Product = (props: ProductProps) => {
               <div className="showcase-container">
                 {newArrivalList.map((product, index) => (
                   <NavLink
-                    to={`/product/${product.productCategory}/${product.productName}`}
+                    to={`/product/${product.productCategory}/${product._id}`}
                     key={index}
                   >
                     <ProductCart productDescription={product} key={index} />
@@ -96,7 +96,7 @@ const Product = (props: ProductProps) => {
               <div className="showcase-container">
                 {trendingList.map((product, index) => (
                   <NavLink
-                    to={`/product/${product.productCategory}/${product.productName}`}
+                    to={`/product/${product.productCategory}/${product._id}`}
                     key={index}
                   >
                     <ProductCart productDescription={product} />
@@ -113,7 +113,7 @@ const Product = (props: ProductProps) => {
               <div className="showcase-container">
                 {topRatedList.map((product, index) => (
                   <NavLink
-                    to={`/product/${product.productCategory}/${product.productName}`}
+                    to={`/product/${product.productCategory}/${product._id}`}
                     key={index}
                   >
                     <ProductCart productDescription={product} key={index} />

@@ -8,6 +8,7 @@ import {
   CallOutline,
   LocationOutline,
 } from "react-ionicons";
+import { NavLink } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -19,76 +20,76 @@ const Footer = () => {
           <div className="footer-category-box">
             <h3 className="category-box-title">Sweets:</h3>
 
-            <a href="#" className="footer-category-link">
+            <NavLink to="/product/sweets" className="footer-category-link">
               Bengali
-            </a>
-            <a href="#" className="footer-category-link">
+            </NavLink>
+            <NavLink to="/product/sweets" className="footer-category-link">
               Mawa
-            </a>
-            <a href="#" className="footer-category-link">
+            </NavLink>
+            <NavLink to="/product/sweets" className="footer-category-link">
               Dry Fruits
-            </a>
-            <a href="#" className="footer-category-link">
+            </NavLink>
+            <NavLink to="/product/sweets" className="footer-category-link">
               SugarFree
-            </a>
+            </NavLink>
           </div>
 
           <div className="footer-category-box">
             <h3 className="category-box-title">Namkeens :</h3>
 
-            <a href="#" className="footer-category-link">
+            <NavLink to="/product/namkeen" className="footer-category-link">
               Laung Sev
-            </a>
-            <a href="#" className="footer-category-link">
+            </NavLink>
+            <NavLink to="/product/namkeen" className="footer-category-link">
               Mixture
-            </a>
-            <a href="#" className="footer-category-link">
+            </NavLink>
+            <NavLink to="/product/namkeen" className="footer-category-link">
               Double Laung Sev
-            </a>
-            <a href="#" className="footer-category-link">
+            </NavLink>
+            <NavLink to="/product/namkeen" className="footer-category-link">
               Poha
-            </a>
-            <a href="#" className="footer-category-link">
+            </NavLink>
+            <NavLink to="/product/namkeen" className="footer-category-link">
               Sweet Mixture
-            </a>
+            </NavLink>
           </div>
 
           <div className="footer-category-box">
-            <h3 className="category-box-title">Cokkies :</h3>
+            <h3 className="category-box-title">cakesookies :</h3>
 
-            <a href="#" className="footer-category-link">
+            <NavLink to="/product/cookies" className="footer-category-link">
               Jam Filled Butter
-            </a>
-            <a href="#" className="footer-category-link">
+            </NavLink>
+            <NavLink to="/product/cookies" className="footer-category-link">
               Pinwheel
-            </a>
-            <a href="#" className="footer-category-link">
+            </NavLink>
+            <NavLink to="/product/cookies" className="footer-category-link">
               Eggnog Thumbprints
-            </a>
-            <a href="#" className="footer-category-link">
+            </NavLink>
+            <NavLink to="/product/cookies" className="footer-category-link">
               Salted Honey Pistachio Cookies
-            </a>
+            </NavLink>
           </div>
 
           <div className="footer-category-box">
             <h3 className="category-box-title">Cakes :</h3>
 
-            <a href="#" className="footer-category-link">
+            <NavLink to="/product/cakes" className="footer-category-link">
               Pineapple
-            </a>
-            <a href="#" className="footer-category-link">
+            </NavLink>
+            <NavLink to="/product/cakes" className="footer-category-link">
               Vanilla
-            </a>
-            <a href="#" className="footer-category-link">
+            </NavLink>
+            <NavLink to="/product/cakes" className="footer-category-link">
               Butterscotch
-            </a>
-            <a href="#" className="footer-category-link">
+            </NavLink>
+            <NavLink to="/product/cakes" className="footer-category-link">
               Red Velvet
-            </a>
+            </NavLink>
 
-            <a href="#" className="footer-category-link">
+            <NavLink to="/product/cakes" className="footer-category-link">
               Caramel
-            </a>
+            </NavLink>
           </div>
         </div>
       </div>
@@ -101,15 +102,15 @@ const Footer = () => {
             </li>
 
             <li className="footer-nav-item">
-              <a href="#" className="footer-nav-link">
+              <NavLink to="/product/sweets" className="footer-nav-link">
                 Sweets
-              </a>
+              </NavLink>
             </li>
 
             <li className="footer-nav-item">
-              <a href="#" className="footer-nav-link">
+              <NavLink to="/product/namkeen" className="footer-nav-link">
                 Namkeens
-              </a>
+              </NavLink>
             </li>
           </ul>
 
@@ -119,33 +120,33 @@ const Footer = () => {
             </li>
 
             <li className="footer-nav-item">
-              <a href="#" className="footer-nav-link">
+              <NavLink to="/product/sweets" className="footer-nav-link">
                 Prices drop
-              </a>
+              </NavLink>
             </li>
 
             <li className="footer-nav-item">
-              <a href="#" className="footer-nav-link">
+              <NavLink to="/product/sweets" className="footer-nav-link">
                 New products
-              </a>
+              </NavLink>
             </li>
 
             <li className="footer-nav-item">
-              <a href="#" className="footer-nav-link">
+              <NavLink to="/product/sweets" className="footer-nav-link">
                 Best sales
-              </a>
+              </NavLink>
             </li>
 
             <li className="footer-nav-item">
-              <a href="#" className="footer-nav-link">
+              <NavLink to="/product/sweets" className="footer-nav-link">
                 Contact us
-              </a>
+              </NavLink>
             </li>
 
             <li className="footer-nav-item">
-              <a href="#" className="footer-nav-link">
+              <NavLink to="/product/sweets" className="footer-nav-link">
                 Sitemap
-              </a>
+              </NavLink>
             </li>
           </ul>
 
@@ -155,33 +156,33 @@ const Footer = () => {
             </li>
 
             <li className="footer-nav-item">
-              <a href="#" className="footer-nav-link">
+              <NavLink to="/product/sweets" className="footer-nav-link">
                 Delivery
-              </a>
+              </NavLink>
             </li>
 
             <li className="footer-nav-item">
-              <a href="#" className="footer-nav-link">
+              <NavLink to="/product/sweets" className="footer-nav-link">
                 Legal Notice
-              </a>
+              </NavLink>
             </li>
 
             <li className="footer-nav-item">
-              <a href="#" className="footer-nav-link">
+              <NavLink to="/product/sweets" className="footer-nav-link">
                 Terms and conditions
-              </a>
+              </NavLink>
             </li>
 
             <li className="footer-nav-item">
-              <a href="#" className="footer-nav-link">
+              <NavLink to="/product/sweets" className="footer-nav-link">
                 About us
-              </a>
+              </NavLink>
             </li>
 
             <li className="footer-nav-item">
-              <a href="#" className="footer-nav-link">
+              <NavLink to="/product/sweets" className="footer-nav-link">
                 Secure payment
-              </a>
+              </NavLink>
             </li>
           </ul>
 
@@ -191,33 +192,33 @@ const Footer = () => {
             </li>
 
             <li className="footer-nav-item">
-              <a href="#" className="footer-nav-link">
+              <NavLink to="/product/sweets" className="footer-nav-link">
                 Prices drop
-              </a>
+              </NavLink>
             </li>
 
             <li className="footer-nav-item">
-              <a href="#" className="footer-nav-link">
+              <NavLink to="/product/sweets" className="footer-nav-link">
                 New products
-              </a>
+              </NavLink>
             </li>
 
             <li className="footer-nav-item">
-              <a href="#" className="footer-nav-link">
+              <NavLink to="/product/sweets" className="footer-nav-link">
                 Best sales
-              </a>
+              </NavLink>
             </li>
 
             <li className="footer-nav-item">
-              <a href="#" className="footer-nav-link">
+              <NavLink to="/product/sweets" className="footer-nav-link">
                 Contact us
-              </a>
+              </NavLink>
             </li>
 
             <li className="footer-nav-item">
-              <a href="#" className="footer-nav-link">
+              <NavLink to="/product/sweets" className="footer-nav-link">
                 Sitemap
-              </a>
+              </NavLink>
             </li>
           </ul>
 
@@ -265,27 +266,27 @@ const Footer = () => {
             <li>
               <ul className="social-link">
                 <li className="footer-nav-item">
-                  <a href="#" className="footer-nav-link">
+                  <NavLink to="/product/sweets" className="footer-nav-link">
                     <LogoFacebook color={""} title={""} />
-                  </a>
+                  </NavLink>
                 </li>
 
                 <li className="footer-nav-item">
-                  <a href="#" className="footer-nav-link">
+                  <NavLink to="/product/sweets" className="footer-nav-link">
                     <LogoTwitter color={""} title={""} />
-                  </a>
+                  </NavLink>
                 </li>
 
                 <li className="footer-nav-item">
-                  <a href="#" className="footer-nav-link">
+                  <NavLink to="/product/sweets" className="footer-nav-link">
                     <LogoLinkedin color={""} title={""} />
-                  </a>
+                  </NavLink>
                 </li>
 
                 <li className="footer-nav-item">
-                  <a href="#" className="footer-nav-link">
+                  <NavLink to="/product/sweets" className="footer-nav-link">
                     <LogoInstagram color={""} title={""} />
-                  </a>
+                  </NavLink>
                 </li>
               </ul>
             </li>
@@ -302,7 +303,8 @@ const Footer = () => {
           />
 
           <p className="copyright">
-            Copyright &copy; <a href="#">Anon</a> all rights reserved.
+            Copyright &copy; <NavLink to="/product/sweets">Anon</NavLink> all
+            rights reserved.
           </p>
         </div>
       </div>

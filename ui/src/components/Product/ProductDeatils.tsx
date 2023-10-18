@@ -7,14 +7,17 @@ import { ProductInfo } from "../interface";
 
 const ProductDeatils = () => {
   // to access the product id from url route
-  const { selectedProductId, category } = useParams();
+  const { productId, category } = useParams();
 
+  // getting product list from redux store
   const productList = useAppSelector(
     (state: RootState) => state.products.productList
   );
+
+  // find method to check the slelected product id and category
   const selectedProduct: ProductInfo | undefined = productList.find(
     (product) =>
-      product._id === selectedProductId || product.productCategory === category
+      product._id === productId && product.productCategory === category
   );
   console.log(selectedProduct);
 
