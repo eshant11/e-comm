@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { SearchSharp } from "react-ionicons";
-import { ProductInfo } from "../interface";
-import Product from "../Product/Product";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { RootState } from "../../app/store";
-import { fetchProductsBySearch } from "../../Redux/Reducer/searchedProduct";
+import {
+  fetchProductsBySearch,
+  clearSearchResults,
+} from "../../Redux/Reducer/searchedProduct";
 
 const SearchFilter = () => {
   const dispatch = useAppDispatch();
@@ -19,16 +20,18 @@ const SearchFilter = () => {
     if (timeoutId) {
       clearTimeout(timeoutId);
     }
-    if (searchProduct.trim() !== "") {
-      const newTimeoutId = setTimeout(() => {
-        dispatch(fetchProductsBySearch(searchProduct));
-      }, 2000);
-      setTimeoutId(newTimeoutId);
-    }
+
+    const newTimeoutId = setTimeout(() => {
+      dispatch(fetchProductsBySearch(searchProduct));
+    }, 1000);
+    setTimeoutId(newTimeoutId);
   };
 
   useEffect(() => {
-    if (searchProduct) {
+    if (!searchProduct) {
+      clearTimeout(timeoutId as NodeJS.Timeout); //On long backspace keypress it won't show last letter result
+      dispatch(clearSearchResults());
+    } else {
       handleDebounce(searchProduct);
     }
   }, [searchProduct]);
@@ -47,11 +50,25 @@ const SearchFilter = () => {
           placeholder="Enter your product name..."
           value={searchProduct}
           onChange={(e) => setSearchProduct(e.target.value)}
+          dir="auto"
         />
         <button className="search-btn">
           <SearchSharp color={""} title={""} />
         </button>
       </div>
+      {searchedList.length > 0 && (
+        <div className="search-results-container">
+          <ul className="search-results-list">
+            {searchedList.map((product) => (
+              <li key={product._id} className="search-result-item">
+                {/* Render product information here */}
+                <h3>{product.productName}</h3>
+                {/* Add more product details if needed */}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </>
   );
 };

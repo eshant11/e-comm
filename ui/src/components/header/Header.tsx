@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   togglelogIn,
@@ -21,9 +20,6 @@ import MobileNavbar from "../navbar/MobileNavbar";
 import SearchFilter from "./SearchFilter";
 
 const Header = () => {
-  const [isProductSubMenuOpen, setProductSubMenuOpen] = useState(false);
-  const [signInDropdownVisible, setSignInDropdownVisible] = useState(false);
-
   const appState = useAppSelector((state) => state.app);
   const dispatch = useAppDispatch();
 

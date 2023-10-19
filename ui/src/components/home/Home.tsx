@@ -5,7 +5,6 @@ import { useLocation } from "react-router-dom";
 import Banner from "../banner/Banner";
 import Footer from "../footer/Footer";
 import Testimonial from "../testimonial/Testimonial";
-import ProductDeatils from "../Product/ProductDeatils";
 
 const Home = () => {
   const appState = useAppSelector((state) => state.app);

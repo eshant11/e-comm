@@ -1,6 +1,6 @@
 export interface ProductInfo {
   productName: String;
-  productCategory: String;
+  productCategory: string;
   productCategoryStatus: String[];
   price: number;
   availablity: Boolean;

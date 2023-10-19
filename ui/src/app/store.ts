@@ -19,8 +19,16 @@ const rootReducer = combineReducers({
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
+// By adding serializableCheck, you're telling the middleware to ignore actions of type persist/PERSIST and persist/REHYDRATE, which are dispatched by redux-persist and contain non-serializable values. This should get rid of the warning.
+
 export const store = configureStore({
   reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: ["persist/PERSIST", "persist/REHYDRATE"],
+      },
+    }),
 });
 
 export const persistor = persistStore(store);
