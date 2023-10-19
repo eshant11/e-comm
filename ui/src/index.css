@@ -443,6 +443,7 @@ body::-webkit-scrollbar-thumb:hover {
   border: 1px solid var(--cultured);
   -webkit-border-radius: var(--border-radius-md);
   border-radius: var(--border-radius-md);
+  width: 100%;
 }
 
 .search-field::-webkit-search-cancel-button {

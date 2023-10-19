@@ -6,9 +6,11 @@ import {
   fetchProductsBySearch,
   clearSearchResults,
 } from "../../Redux/Reducer/searchedProduct";
+import { useNavigate } from "react-router-dom";
 
 const SearchFilter = () => {
   const dispatch = useAppDispatch();
+  const naviagte = useNavigate();
 
   const searchedList = useAppSelector(
     (state: RootState) => state.search.searchResults
@@ -41,7 +43,7 @@ const SearchFilter = () => {
   }, [searchedList]);
 
   return (
-    <>
+    <div className="search-wrapper">
       <div className="header-search-container">
         <input
           type="search"
@@ -62,14 +64,23 @@ const SearchFilter = () => {
             {searchedList.map((product) => (
               <li key={product._id} className="search-result-item">
                 {/* Render product information here */}
-                <h3>{product.productName}</h3>
+                <h3
+                  onClick={() => {
+                    naviagte(
+                      `/product/${product.productCategory}/${product._id}`
+                    );
+                    setSearchProduct("");
+                  }}
+                >
+                  {product.productName}
+                </h3>
                 {/* Add more product details if needed */}
               </li>
             ))}
           </ul>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

@@ -10,15 +10,29 @@ const ProductDeatils = () => {
   const { productId, category } = useParams();
 
   // getting product list from redux store
+  const searchResults = useAppSelector(
+    (state: RootState) => state.search.searchResults
+  );
+
+  // getting product list from redux store
   const productList = useAppSelector(
     (state: RootState) => state.products.productList
   );
 
-  // find method to check the slelected product id and category
-  const selectedProduct: ProductInfo | undefined = productList.find(
+  // find method to check the selected product id and category
+  let selectedProduct: ProductInfo | undefined = searchResults.find(
     (product) =>
       product._id === productId && product.productCategory === category
   );
+
+  // If product not found in search results, look in the product list
+  if (!selectedProduct) {
+    selectedProduct = productList.find(
+      (product) =>
+        product._id === productId && product.productCategory === category
+    );
+  }
+
   console.log(selectedProduct);
 
   return (
