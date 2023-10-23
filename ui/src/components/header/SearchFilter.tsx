@@ -7,8 +7,10 @@ import {
   clearSearchResults,
 } from "../../Redux/Reducer/searchedProduct";
 import { useNavigate } from "react-router-dom";
+import { set } from "lodash";
 
 const SearchFilter = () => {
+  const [showResults, setShowResults] = useState(true);
   const dispatch = useAppDispatch();
   const naviagte = useNavigate();
 
@@ -58,7 +60,7 @@ const SearchFilter = () => {
           <SearchSharp color={""} title={""} />
         </button>
       </div>
-      {searchedList.length > 0 && (
+      {showResults && searchedList.length > 0 && (
         <div className="search-results-container">
           <ul className="search-results-list">
             {searchedList.map((product) => (
@@ -69,7 +71,7 @@ const SearchFilter = () => {
                     naviagte(
                       `/product/${product.productCategory}/${product._id}`
                     );
-                    setSearchProduct("");
+                    setShowResults(false);
                   }}
                 >
                   {product.productName}

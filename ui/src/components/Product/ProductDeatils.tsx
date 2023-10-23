@@ -35,67 +35,71 @@ const ProductDeatils = () => {
 
   console.log(selectedProduct);
 
-  return (
-    <div className="product-featured">
-      <div className="showcase-wrapper has-scrollbar">
-        <div className="showcase-container">
-          <div className="showcase">
-            <div className="showcase-banner">
-              <img
-                src={selectedProduct?.imageUrl}
-                alt="sweet"
-                className="showcase-img"
-              />
-            </div>
-
-            <div className="showcase-content">
-              <div className="showcase-rating">
-                <Star color={"hsl(29, 90%, 65%)"} title={""} />
-                <Star color={"hsl(29, 90%, 65%)"} title={""} />
-                <Star color={"hsl(29, 90%, 65%)"} title={""} />
-                <StarOutline color={"#00000"} title={""} />
-                <StarOutline color={"#00000"} title={""} />
+  return selectedProduct ? (
+    <>
+      <div className="product-featured">
+        <div className="showcase-wrapper has-scrollbar">
+          <div className="showcase-container">
+            <div className="showcase">
+              <div className="showcase-banner">
+                <img
+                  src={selectedProduct?.imageUrl}
+                  alt="sweet"
+                  className="showcase-img"
+                />
               </div>
 
-              <a href="#">
-                <h3 className="showcase-title">
-                  {selectedProduct?.productName}
-                </h3>
-              </a>
-
-              <p className="showcase-desc">
-                Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor dolor
-                sit amet consectetur Lorem ipsum dolor Lorem ipsum dolor sit
-                amet consectetur Lorem ipsum dolor dolor sit amet consectetur
-                Lorem ipsum dolor
-              </p>
-
-              <div className="price-box">
-                <p className="price">₹{selectedProduct?.price}</p>
-
-                <del>₹{selectedProduct?.offer}</del>
-              </div>
-
-              <button className="add-cart-btn">add to cart</button>
-
-              <div className="showcase-status">
-                <div className="wrapper">
-                  <p>
-                    {selectedProduct?.availablity === true ? (
-                      <b>Available</b>
-                    ) : (
-                      <b>Not Available</b>
-                    )}
-                  </p>
+              <div className="showcase-content">
+                <div className="showcase-rating">
+                  <Star color={"hsl(29, 90%, 65%)"} title={""} />
+                  <Star color={"hsl(29, 90%, 65%)"} title={""} />
+                  <Star color={"hsl(29, 90%, 65%)"} title={""} />
+                  <StarOutline color={"#00000"} title={""} />
+                  <StarOutline color={"#00000"} title={""} />
                 </div>
 
-                <div className="showcase-status-bar"></div>
+                <a href="#">
+                  <h3 className="showcase-title">
+                    {selectedProduct?.productName}
+                  </h3>
+                </a>
+
+                <p className="showcase-desc">
+                  Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor dolor
+                  sit amet consectetur Lorem ipsum dolor Lorem ipsum dolor sit
+                  amet consectetur Lorem ipsum dolor dolor sit amet consectetur
+                  Lorem ipsum dolor
+                </p>
+
+                <div className="price-box">
+                  <p className="price">₹{selectedProduct?.price}</p>
+
+                  <del>₹{selectedProduct?.offer}</del>
+                </div>
+
+                <button className="add-cart-btn">add to cart</button>
+
+                <div className="showcase-status">
+                  <div className="wrapper">
+                    <p>
+                      {selectedProduct?.availablity === true ? (
+                        <b>Available</b>
+                      ) : (
+                        <b>Not Available</b>
+                      )}
+                    </p>
+                  </div>
+
+                  <div className="showcase-status-bar"></div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
+  ) : (
+    <h3>Loading...</h3>
   );
 };
 
