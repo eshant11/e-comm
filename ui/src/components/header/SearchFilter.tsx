@@ -7,7 +7,6 @@ import {
   clearSearchResults,
 } from "../../Redux/Reducer/searchedProduct";
 import { useNavigate } from "react-router-dom";
-import { set } from "lodash";
 
 const SearchFilter = () => {
   const [showResults, setShowResults] = useState(true);
@@ -36,6 +35,7 @@ const SearchFilter = () => {
       clearTimeout(timeoutId as NodeJS.Timeout); //On long backspace keypress it won't show last letter result
       dispatch(clearSearchResults());
     } else {
+      setShowResults(true);
       handleDebounce(searchProduct);
     }
   }, [searchProduct]);

@@ -24,8 +24,8 @@ const Home = () => {
         {shouldRenderBanner && <Banner />}
         <Outlet />
         {shouldRenderBanner && <Testimonial />}
-        <Footer />
       </main>
+      <Footer />
     </>
   );
 };

@@ -825,6 +825,7 @@ body::-webkit-scrollbar-thumb:hover {
 
 .category {
   margin-bottom: 30px;
+  margin-top: 20px;
 }
 
 .category-item-container {

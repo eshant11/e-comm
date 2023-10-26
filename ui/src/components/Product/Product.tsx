@@ -5,6 +5,7 @@ import { fetchProductsByCategory } from "../../Redux/Reducer/productReducer";
 import { RootState } from "../../app/store";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { NavLink } from "react-router-dom";
+import { clearSearchResults } from "../../Redux/Reducer/searchedProduct";
 
 interface ProductProps {
   category?: string;
@@ -16,6 +17,7 @@ const Product = (props: ProductProps) => {
   const productList = useAppSelector(
     (state: RootState) => state.products.productList
   );
+
   useEffect(() => {
     if (props.category) {
       // Dispatch the fetchProductsByCategory action
@@ -24,6 +26,11 @@ const Product = (props: ProductProps) => {
       );
     }
   }, [dispatch, props.category]);
+
+  // To clear searchResult state so we can suggest product acc. to productList not searchResult
+  useEffect(() => {
+    dispatch(clearSearchResults());
+  }, []);
 
   // filter the product whose productCategoryStatus == "New Arrival"
   const newArrivalList: ProductInfo[] = productList
