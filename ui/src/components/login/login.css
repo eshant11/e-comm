@@ -110,15 +110,19 @@ body:has(.active-login) {
   color: white;
   max-width: fit-content;
   display: inline-block;
-  margin-right: 4%;
+  margin-right: 10%;
   padding: 0;
   border: none;
   vertical-align: middle; /* Add this line */
+  border-radius: 20px;
 }
-.google-login img {
+.google-login .customGoogleButton {
   height: 30px;
   width: 30px;
+  box-shadow: none;
+  border: none;
 }
+
 .login-container1 .apple-login {
   color: white;
   max-width: fit-content;

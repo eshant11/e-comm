@@ -6,6 +6,11 @@ import {
 } from "../../Redux/Reducer/appReducer";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { logIn } from "../../service/logIn";
+import {
+  GoogleLoginResponse,
+  GoogleLoginResponseOffline,
+  GoogleLogin,
+} from "react-google-login";
 
 export interface LoginForm {
   userName: string;
@@ -53,6 +58,19 @@ const Login = () => {
     dispatch(signinComponentHandler(true));
     dispatch(loginComponentHandler(false));
   };
+
+  //For social login
+
+  const onSuccess = (res: GoogleLoginResponse | GoogleLoginResponseOffline) => {
+    if ("tokenId" in res) {
+      // Successful Google login, handle the response here
+      console.log("LOGIN SUCCESS !!", res.profileObj);
+    }
+  };
+  const onFailure = (res: GoogleLoginResponse | GoogleLoginResponseOffline) => {
+    // Google login failed, handle the error here
+    console.log("LOGIN FAILED !!", res);
+  };
   return (
     <>
       <div
@@ -95,7 +113,16 @@ const Login = () => {
             <p>Or login with:</p>
             <div className="login-container1">
               <a className="google-login">
-                <img src="/Images/google.png" alt="google" />
+                {/* <img src="/Images/google.png" alt="google" /> */}
+                <GoogleLogin
+                  clientId="8325908074-23coorhho96dbaf179vk0ng3ne4v619s.apps.googleusercontent.com"
+                  buttonText=""
+                  onSuccess={onSuccess}
+                  onFailure={onFailure}
+                  cookiePolicy={"single_host_origin"}
+                  isSignedIn={true}
+                  className="customGoogleButton"
+                />
               </a>
               <a className="apple-login">
                 <img src="/Images/apple.png" alt="apple" />
