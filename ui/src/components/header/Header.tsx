@@ -18,6 +18,9 @@ import Signup from "../signup/Signup";
 import DesktopNavbar from "../navbar/DesktopNavbar";
 import MobileNavbar from "../navbar/MobileNavbar";
 import SearchFilter from "./SearchFilter";
+import { useEffect } from "react";
+import { gapi } from "gapi-script";
+import { GoogleLogout } from "react-google-login";
 
 const Header = () => {
   const appState = useAppSelector((state) => state.app);
@@ -25,12 +28,22 @@ const Header = () => {
 
   const handleSignInClick = () => {
     dispatch(togglelogIn(false));
-    console.log(appState.isLoggedIn);
+
+    console.log("User signed out.", appState.isLoggedIn);
   };
   const loginHandler = () => {
     dispatch(loginComponentHandler(true));
   };
-
+  useEffect(() => {
+    // Load the Google API client and the auth2 library
+    gapi.load("client:auth2", () => {
+      // Initialize the Google API client
+      gapi.client.init({
+        clientId: "YOUR_CLIENT_ID",
+        plugin_name: "chat",
+      });
+    });
+  }, []);
   return (
     <header>
       <div className="header-top">
@@ -108,8 +121,12 @@ const Header = () => {
                 ) : (
                   <>
                     <a href="#">My Account</a>
-                    <button onClick={handleSignInClick}>
-                      <a href="#">Sign Out</a>
+                    <button>
+                      <GoogleLogout
+                        clientId="YOUR_CLIENT_ID"
+                        buttonText="Logout"
+                        onLogoutSuccess={handleSignInClick}
+                      />
                     </button>
                   </>
                 )}

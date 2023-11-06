@@ -38,7 +38,7 @@ const SimilarProductSuggestion: React.FC<SimilarProductSuggestionProps> = ({
     // <div className="category">
     <div className="container">
       {/* <div className="category-item-container has-scrollbar"> */}
-      <Slider {...settings}>
+      <Slider {...settings} className="slider">
         {similarProducts.map((product) => (
           <div key={product._id} className="category-item">
             <div className="category-img-box">
@@ -59,8 +59,8 @@ const SimilarProductSuggestion: React.FC<SimilarProductSuggestionProps> = ({
           </div>
         ))}
       </Slider>
+      {/* </div> */}
     </div>
-    //   </div>
     // </div>
   );
 };

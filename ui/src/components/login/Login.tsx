@@ -65,6 +65,10 @@ const Login = () => {
     if ("tokenId" in res) {
       // Successful Google login, handle the response here
       console.log("LOGIN SUCCESS !!", res.profileObj);
+      dispatch(togglelogIn(true));
+      setTimeout(() => {
+        dispatch(loginComponentHandler(false));
+      }, 300);
     }
   };
   const onFailure = (res: GoogleLoginResponse | GoogleLoginResponseOffline) => {
@@ -113,15 +117,15 @@ const Login = () => {
             <p>Or login with:</p>
             <div className="login-container1">
               <a className="google-login">
-                {/* <img src="/Images/google.png" alt="google" /> */}
                 <GoogleLogin
                   clientId="8325908074-23coorhho96dbaf179vk0ng3ne4v619s.apps.googleusercontent.com"
                   buttonText=""
                   onSuccess={onSuccess}
                   onFailure={onFailure}
                   cookiePolicy={"single_host_origin"}
-                  isSignedIn={true}
+                  isSignedIn={false} //for default loggedin
                   className="customGoogleButton"
+                  prompt="select_account" // to ask every time for a option for email
                 />
               </a>
               <a className="apple-login">
