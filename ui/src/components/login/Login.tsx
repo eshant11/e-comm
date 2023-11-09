@@ -13,12 +13,12 @@ import {
 } from "react-google-login";
 
 export interface LoginForm {
-  userName: string;
+  email: string;
   password: string;
 }
 const Login = () => {
   const loginFormDetails: LoginForm = {
-    userName: "",
+    email: "",
     password: "",
   };
   const [loginDetails, setLoginDetails] = useState<LoginForm>(loginFormDetails);
@@ -90,13 +90,13 @@ const Login = () => {
           <span className="login-error-message">{loginError}</span>
 
           <form className="login-form" onSubmit={userLoginHandle}>
-            <label htmlFor="username">Username:</label>
+            <label htmlFor="email">Email:</label>
             <input
               type="text"
-              id="username"
-              name="userName"
+              id="email"
+              name="email"
               onChange={loginInputsHandle}
-              value={loginDetails.userName}
+              value={loginDetails.email}
               required
             />
 

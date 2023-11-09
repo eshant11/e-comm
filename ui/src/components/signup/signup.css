@@ -169,14 +169,13 @@ body:has(.active-signup) {
   color: white;
   max-width: fit-content;
   display: inline-block;
-  margin-right: 4%;
   padding: 0;
-  border: none;
+  margin-right: -4%;
   vertical-align: middle; /* Add this line */
 }
-.google-signup img {
-  height: 30px;
-  width: 30px;
+.google-register {
+  border: none;
+  box-shadow: none !important;
 }
 .signup-container1 .apple-signup {
   color: white;

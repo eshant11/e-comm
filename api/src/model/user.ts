@@ -5,7 +5,6 @@ const userSchema = new mongoose.Schema({
   userName: {
     type: String,
     unique: true, // Ensures usernames are unique
-    required: true,
   },
   fullName: {
     type: String,
@@ -18,17 +17,15 @@ const userSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: true,
   },
   phoneNumber: {
     type: String,
     unique: true, // You can remove this if phone numbers don't need to be unique
-    required: true,
   },
   gender: {
     type: String,
     enum: ["Male", "Female", "Other"], // You can define your own gender options
-    required: true,
+    default: "Other",
   },
   id: Number,
 });

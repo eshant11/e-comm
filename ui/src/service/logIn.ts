@@ -4,7 +4,7 @@ import { LoginForm } from "../components/login/Login";
 export const logIn = async (loginDetails: LoginForm) => {
   try {
     const response = await axios.post("http://localhost:8080/api/login", {
-      username: loginDetails.userName,
+      email: loginDetails.email,
       password: loginDetails.password,
     });
     return response;

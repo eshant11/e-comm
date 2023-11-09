@@ -7,6 +7,10 @@ import {
 } from "../../Redux/Reducer/appReducer";
 import signupService from "../../service/signupService";
 import { FormData } from "../interface";
+import GoogleLogin, {
+  GoogleLoginResponse,
+  GoogleLoginResponseOffline,
+} from "react-google-login";
 
 const Signup = () => {
   const dispatch = useAppDispatch();
@@ -36,7 +40,10 @@ const Signup = () => {
 
   // to sumbit signup form
   const userSignUpHandler = async (event: any) => {
-    event.preventDefault();
+    if (event && typeof event.preventDefault === "function") {
+      event.preventDefault();
+    }
+
     const response = await signupService(formData);
     if (response && response.status === 200) {
       dispatch(togglelogIn(true));
@@ -44,6 +51,7 @@ const Signup = () => {
     } else {
       dispatch(signinComponentHandler(true));
     }
+    return response;
   };
 
   // to open login form
@@ -54,7 +62,6 @@ const Signup = () => {
 
   const inputsHandle = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
-    console.log(formData.confirm_Password);
 
     setFormData((prevData) => ({
       ...prevData,
@@ -77,6 +84,46 @@ const Signup = () => {
         setMobileNumberError("");
       }
     }
+  };
+
+  const onSuccess = async (
+    res: GoogleLoginResponse | GoogleLoginResponseOffline
+  ) => {
+    if ("tokenId" in res) {
+      // Extract data from Google profile
+      const { email, name } = res.profileObj;
+
+      const googleSignUpData: FormData = {
+        fullName: name,
+        email: email,
+        userName: "",
+        phoneNumber: "",
+        password: "",
+        confirm_Password: "",
+        gender: "Other",
+      };
+      const response = await signupService(googleSignUpData);
+
+      // Successful Google signup, handle the response here
+      // console.log("SIGNUP SUCCESS !!", response);
+
+      // Check the response and display an error message if email is already taken
+      if (response && response.status === 500) {
+        console.log("Signup error");
+      } else {
+        // Successful Google signup, handle the response here
+        console.log("SIGNUP SUCCESS !!", res.profileObj);
+        dispatch(togglelogIn(true));
+        setTimeout(() => {
+          dispatch(signinComponentHandler(false));
+        }, 300);
+      }
+    }
+  };
+
+  const onFailure = (res: GoogleLoginResponse | GoogleLoginResponseOffline) => {
+    // Google signup failed, handle the error here
+    console.log("SIGNUP FAILED !!", res);
   };
   return (
     <div
@@ -220,7 +267,17 @@ const Signup = () => {
           <p>Or sign up with:</p>
           <div className="signup-container1">
             <button className="google-signup">
-              <img src="/Images/google.png" alt="google" />
+              <GoogleLogin
+                clientId="8325908074-23coorhho96dbaf179vk0ng3ne4v619s.apps.googleusercontent.com"
+                buttonText=""
+                onSuccess={onSuccess}
+                onFailure={onFailure}
+                cookiePolicy={"single_host_origin"}
+                isSignedIn={false}
+                className="google-register"
+                prompt="select_account" // t ask every time for a option for email
+              />
+              o
             </button>
             <button className="apple-signup">
               <img src="/Images/apple.png" alt="apple" />

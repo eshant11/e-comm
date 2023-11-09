@@ -11,9 +11,9 @@ interface userDetails {
   confirm_Password: string;
   gender: string;
 }
-export const signIn = async (username: string, password: string) => {
+export const signIn = async (email: string, password: string) => {
   // Find the user by username
-  const user = await User.findOne({ userName: username });
+  const user = await User.findOne({ email: email });
 
   if (!user) throw { message: "Authentication failed." };
   // Compare the password
@@ -33,10 +33,10 @@ export const signIn = async (username: string, password: string) => {
 
 export const signUp = async (userDetails: userDetails) => {
   // Check if the username already exists
-  const existingUser = await User.findOne({ username: userDetails.userName });
+  const existingUser = await User.findOne({ email: userDetails.email });
   console.log(existingUser);
   if (existingUser) {
-    throw { message: "Username already exists." };
+    return { message: "User already Exist." };
   }
 
   // Hash the password
