@@ -11,6 +11,12 @@ import {
 import { NavLink } from "react-router-dom";
 
 const Footer = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth", // for a smooth scroll
+    });
+  };
   return (
     <footer>
       <div className="footer-category">
@@ -20,16 +26,32 @@ const Footer = () => {
           <div className="footer-category-box">
             <h3 className="category-box-title">Sweets:</h3>
 
-            <NavLink to="/product/sweets" className="footer-category-link">
+            <NavLink
+              to="/product/sweet"
+              className="footer-category-link"
+              onClick={scrollToTop}
+            >
               Bengali
             </NavLink>
-            <NavLink to="/product/sweets" className="footer-category-link">
+            <NavLink
+              to="/product/sweet"
+              className="footer-category-link"
+              onClick={scrollToTop}
+            >
               Mawa
             </NavLink>
-            <NavLink to="/product/sweets" className="footer-category-link">
+            <NavLink
+              to="/product/sweet"
+              className="footer-category-link"
+              onClick={scrollToTop}
+            >
               Dry Fruits
             </NavLink>
-            <NavLink to="/product/sweets" className="footer-category-link">
+            <NavLink
+              to="/product/sweet"
+              className="footer-category-link"
+              onClick={scrollToTop}
+            >
               SugarFree
             </NavLink>
           </div>
@@ -37,19 +59,39 @@ const Footer = () => {
           <div className="footer-category-box">
             <h3 className="category-box-title">Namkeens :</h3>
 
-            <NavLink to="/product/namkeen" className="footer-category-link">
+            <NavLink
+              to="/product/namkeen"
+              className="footer-category-link"
+              onClick={scrollToTop}
+            >
               Laung Sev
             </NavLink>
-            <NavLink to="/product/namkeen" className="footer-category-link">
+            <NavLink
+              to="/product/namkeen"
+              className="footer-category-link"
+              onClick={scrollToTop}
+            >
               Mixture
             </NavLink>
-            <NavLink to="/product/namkeen" className="footer-category-link">
+            <NavLink
+              to="/product/namkeen"
+              className="footer-category-link"
+              onClick={scrollToTop}
+            >
               Double Laung Sev
             </NavLink>
-            <NavLink to="/product/namkeen" className="footer-category-link">
+            <NavLink
+              to="/product/namkeen"
+              className="footer-category-link"
+              onClick={scrollToTop}
+            >
               Poha
             </NavLink>
-            <NavLink to="/product/namkeen" className="footer-category-link">
+            <NavLink
+              to="/product/namkeen"
+              className="footer-category-link"
+              onClick={scrollToTop}
+            >
               Sweet Mixture
             </NavLink>
           </div>
@@ -57,16 +99,32 @@ const Footer = () => {
           <div className="footer-category-box">
             <h3 className="category-box-title">cakesookies :</h3>
 
-            <NavLink to="/product/cookies" className="footer-category-link">
+            <NavLink
+              to="/product/cookies"
+              className="footer-category-link"
+              onClick={scrollToTop}
+            >
               Jam Filled Butter
             </NavLink>
-            <NavLink to="/product/cookies" className="footer-category-link">
+            <NavLink
+              to="/product/cookies"
+              className="footer-category-link"
+              onClick={scrollToTop}
+            >
               Pinwheel
             </NavLink>
-            <NavLink to="/product/cookies" className="footer-category-link">
+            <NavLink
+              to="/product/cookies"
+              className="footer-category-link"
+              onClick={scrollToTop}
+            >
               Eggnog Thumbprints
             </NavLink>
-            <NavLink to="/product/cookies" className="footer-category-link">
+            <NavLink
+              to="/product/cookies"
+              className="footer-category-link"
+              onClick={scrollToTop}
+            >
               Salted Honey Pistachio Cookies
             </NavLink>
           </div>
@@ -74,20 +132,40 @@ const Footer = () => {
           <div className="footer-category-box">
             <h3 className="category-box-title">Cakes :</h3>
 
-            <NavLink to="/product/cakes" className="footer-category-link">
+            <NavLink
+              to="/product/cakes"
+              className="footer-category-link"
+              onClick={scrollToTop}
+            >
               Pineapple
             </NavLink>
-            <NavLink to="/product/cakes" className="footer-category-link">
+            <NavLink
+              to="/product/cakes"
+              className="footer-category-link"
+              onClick={scrollToTop}
+            >
               Vanilla
             </NavLink>
-            <NavLink to="/product/cakes" className="footer-category-link">
+            <NavLink
+              to="/product/cakes"
+              className="footer-category-link"
+              onClick={scrollToTop}
+            >
               Butterscotch
             </NavLink>
-            <NavLink to="/product/cakes" className="footer-category-link">
+            <NavLink
+              to="/product/cakes"
+              className="footer-category-link"
+              onClick={scrollToTop}
+            >
               Red Velvet
             </NavLink>
 
-            <NavLink to="/product/cakes" className="footer-category-link">
+            <NavLink
+              to="/product/cakes"
+              className="footer-category-link"
+              onClick={scrollToTop}
+            >
               Caramel
             </NavLink>
           </div>
@@ -102,13 +180,21 @@ const Footer = () => {
             </li>
 
             <li className="footer-nav-item">
-              <NavLink to="/product/sweets" className="footer-nav-link">
+              <NavLink
+                to="/product/sweet"
+                className="footer-nav-link"
+                onClick={scrollToTop}
+              >
                 Sweets
               </NavLink>
             </li>
 
             <li className="footer-nav-item">
-              <NavLink to="/product/namkeen" className="footer-nav-link">
+              <NavLink
+                to="/product/namkeen"
+                className="footer-nav-link"
+                onClick={scrollToTop}
+              >
                 Namkeens
               </NavLink>
             </li>
@@ -120,31 +206,51 @@ const Footer = () => {
             </li>
 
             <li className="footer-nav-item">
-              <NavLink to="/product/sweets" className="footer-nav-link">
+              <NavLink
+                to="/product/sweet"
+                className="footer-nav-link"
+                onClick={scrollToTop}
+              >
                 Prices drop
               </NavLink>
             </li>
 
             <li className="footer-nav-item">
-              <NavLink to="/product/sweets" className="footer-nav-link">
+              <NavLink
+                to="/product/sweet"
+                className="footer-nav-link"
+                onClick={scrollToTop}
+              >
                 New products
               </NavLink>
             </li>
 
             <li className="footer-nav-item">
-              <NavLink to="/product/sweets" className="footer-nav-link">
+              <NavLink
+                to="/product/sweet"
+                className="footer-nav-link"
+                onClick={scrollToTop}
+              >
                 Best sales
               </NavLink>
             </li>
 
             <li className="footer-nav-item">
-              <NavLink to="/product/sweets" className="footer-nav-link">
+              <NavLink
+                to="/product/sweet"
+                className="footer-nav-link"
+                onClick={scrollToTop}
+              >
                 Contact us
               </NavLink>
             </li>
 
             <li className="footer-nav-item">
-              <NavLink to="/product/sweets" className="footer-nav-link">
+              <NavLink
+                to="/product/sweet"
+                className="footer-nav-link"
+                onClick={scrollToTop}
+              >
                 Sitemap
               </NavLink>
             </li>
@@ -156,31 +262,51 @@ const Footer = () => {
             </li>
 
             <li className="footer-nav-item">
-              <NavLink to="/product/sweets" className="footer-nav-link">
+              <NavLink
+                to="/product/sweet"
+                className="footer-nav-link"
+                onClick={scrollToTop}
+              >
                 Delivery
               </NavLink>
             </li>
 
             <li className="footer-nav-item">
-              <NavLink to="/product/sweets" className="footer-nav-link">
+              <NavLink
+                to="/product/sweet"
+                className="footer-nav-link"
+                onClick={scrollToTop}
+              >
                 Legal Notice
               </NavLink>
             </li>
 
             <li className="footer-nav-item">
-              <NavLink to="/product/sweets" className="footer-nav-link">
+              <NavLink
+                to="/product/sweet"
+                className="footer-nav-link"
+                onClick={scrollToTop}
+              >
                 Terms and conditions
               </NavLink>
             </li>
 
             <li className="footer-nav-item">
-              <NavLink to="/product/sweets" className="footer-nav-link">
+              <NavLink
+                to="/product/sweet"
+                className="footer-nav-link"
+                onClick={scrollToTop}
+              >
                 About us
               </NavLink>
             </li>
 
             <li className="footer-nav-item">
-              <NavLink to="/product/sweets" className="footer-nav-link">
+              <NavLink
+                to="/product/sweet"
+                className="footer-nav-link"
+                onClick={scrollToTop}
+              >
                 Secure payment
               </NavLink>
             </li>
@@ -192,31 +318,47 @@ const Footer = () => {
             </li>
 
             <li className="footer-nav-item">
-              <NavLink to="/product/sweets" className="footer-nav-link">
+              <NavLink
+                to="/product/sweet"
+                className="footer-nav-link"
+                onClick={scrollToTop}
+              >
                 Prices drop
               </NavLink>
             </li>
 
             <li className="footer-nav-item">
-              <NavLink to="/product/sweets" className="footer-nav-link">
+              <NavLink to="/product/sweet" className="footer-nav-link">
                 New products
               </NavLink>
             </li>
 
             <li className="footer-nav-item">
-              <NavLink to="/product/sweets" className="footer-nav-link">
+              <NavLink
+                to="/product/sweet"
+                className="footer-nav-link"
+                onClick={scrollToTop}
+              >
                 Best sales
               </NavLink>
             </li>
 
             <li className="footer-nav-item">
-              <NavLink to="/product/sweets" className="footer-nav-link">
+              <NavLink
+                to="/product/sweet"
+                className="footer-nav-link"
+                onClick={scrollToTop}
+              >
                 Contact us
               </NavLink>
             </li>
 
             <li className="footer-nav-item">
-              <NavLink to="/product/sweets" className="footer-nav-link">
+              <NavLink
+                to="/product/sweet"
+                className="footer-nav-link"
+                onClick={scrollToTop}
+              >
                 Sitemap
               </NavLink>
             </li>

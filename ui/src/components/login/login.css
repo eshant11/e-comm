@@ -119,8 +119,8 @@ body:has(.active-login) {
 .google-login .customGoogleButton {
   height: 30px;
   width: 30px;
-  box-shadow: none;
-  border: none;
+  box-shadow: none !important;
+  border: none !important;
 }
 
 .login-container1 .apple-login {

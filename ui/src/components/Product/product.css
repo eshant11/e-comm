@@ -1,0 +1,28 @@
+.slick-active {
+  margin-right: 5px;
+}
+.slick-prev {
+  background: #fff !important;
+}
+.slick-next:before,
+.slick-prev:before {
+  opacity: 1 !important;
+  color: var(--salmon-pink) !important;
+}
+
+.slick-next {
+  right: -22px;
+  top: 25% !important;
+}
+.slick-prev {
+  left: -22px;
+  top: 25% !important;
+}
+@media (max-width: 768px) {
+  .slick-next {
+    right: -17px;
+  }
+  .slick-prev {
+    left: -17px;
+  }
+}

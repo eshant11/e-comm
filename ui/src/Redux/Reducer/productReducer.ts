@@ -25,6 +25,8 @@ export const fetchProductsByCategory = createAsyncThunk(
       const response = await axios.get(
         `http://localhost:8080/api/product/${category}`
       );
+      console.log(category);
+
       return response.data; // Assuming the response contains an array of products
     } catch (error) {
       throw error;

@@ -11,6 +11,8 @@ interface userDetails {
   confirm_Password: string;
   gender: string;
 }
+
+//Login Function
 export const signIn = async (email: string, password: string) => {
   // Find the user by username
   const user = await User.findOne({ email: email });
@@ -31,6 +33,7 @@ export const signIn = async (email: string, password: string) => {
   return token;
 };
 
+//Signup function
 export const signUp = async (userDetails: userDetails) => {
   // Check if the username already exists
   const existingUser = await User.findOne({ email: userDetails.email });

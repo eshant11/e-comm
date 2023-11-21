@@ -4,6 +4,7 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { NavLink, useNavigate } from "react-router-dom";
 
 type SimilarProductSuggestionProps = {
   category: string | undefined;
@@ -12,6 +13,8 @@ type SimilarProductSuggestionProps = {
 const SimilarProductSuggestion: React.FC<SimilarProductSuggestionProps> = ({
   category,
 }) => {
+  const navigate = useNavigate();
+
   const searchResults = useAppSelector(
     (state: RootState) => state.search.searchResults
   );
@@ -29,18 +32,24 @@ const SimilarProductSuggestion: React.FC<SimilarProductSuggestionProps> = ({
     infinite: true,
     speed: 500,
     slidesToShow: 3,
-    slidesToScroll: 1,
-    autoplay: true,
+    slidesToScroll: 2,
+    autoplay: false,
     autoplaySpeed: 3000, // 2 seconds
   };
 
   return (
     // <div className="category">
     <div className="container">
-      {/* <div className="category-item-container has-scrollbar"> */}
+      {/* <div className="category-item-container "> */}
       <Slider {...settings} className="slider">
         {similarProducts.map((product) => (
-          <div key={product._id} className="category-item">
+          <div
+            key={product._id}
+            className="category-item"
+            onClick={() => {
+              navigate(`/product/${product.productCategory}/${product._id}`);
+            }}
+          >
             <div className="category-img-box">
               <img src={product.imageUrl} alt="" width="30" />
             </div>
@@ -52,9 +61,13 @@ const SimilarProductSuggestion: React.FC<SimilarProductSuggestionProps> = ({
                 <p className="category-item-amount">₹{product.price}</p>
               </div>
 
-              <a href="#" className="category-btn">
+              <NavLink
+                to={`/product/${product.productCategory}`}
+                onClick={(e) => e.stopPropagation()}
+                className="category-btn"
+              >
                 Show all
-              </a>
+              </NavLink>
             </div>
           </div>
         ))}

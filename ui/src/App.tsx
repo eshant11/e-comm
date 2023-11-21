@@ -22,7 +22,7 @@ function App() {
               element={<ProductDeatils />}
             />
             <Route
-              path="/product/sweets"
+              path="/product/sweet"
               element={<Product category="sweet" />}
             />
             <Route

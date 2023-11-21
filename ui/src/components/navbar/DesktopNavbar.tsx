@@ -23,7 +23,7 @@ const DesktopNavbar = () => {
                 </li>
 
                 <li className="panel-list-item">
-                  <NavLink to="/product/sweets">Sweets</NavLink>
+                  <NavLink to="/product/sweet">Sweets</NavLink>
                 </li>
 
                 <li className="panel-list-item">

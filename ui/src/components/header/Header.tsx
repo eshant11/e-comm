@@ -26,7 +26,7 @@ const Header = () => {
   const appState = useAppSelector((state) => state.app);
   const dispatch = useAppDispatch();
 
-  const handleSignInClick = () => {
+  const handleSignOutClick = () => {
     dispatch(togglelogIn(false));
 
     console.log("User signed out.", appState.isLoggedIn);
@@ -121,13 +121,13 @@ const Header = () => {
                 ) : (
                   <>
                     <a href="#">My Account</a>
-                    <button>
-                      <GoogleLogout
-                        clientId="YOUR_CLIENT_ID"
-                        buttonText="Logout"
-                        onLogoutSuccess={handleSignInClick}
-                      />
-                    </button>
+
+                    <GoogleLogout
+                      clientId="YOUR_CLIENT_ID"
+                      buttonText="Logout"
+                      onLogoutSuccess={handleSignOutClick}
+                      className="logout-btn"
+                    />
                   </>
                 )}
               </div>
