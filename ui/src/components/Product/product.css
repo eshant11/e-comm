@@ -26,3 +26,11 @@
     left: -17px;
   }
 }
+@media (min-width: 1200px) {
+  .slick-next {
+    right: -20px;
+  }
+  .slick-prev {
+    left: -19px !important;
+  }
+}

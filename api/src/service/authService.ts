@@ -33,6 +33,25 @@ export const signIn = async (email: string, password: string) => {
   return token;
 };
 
+// social login
+export const socialLogIn = async (email: string) => {
+  // Find the user by username
+  try {
+    const user = await User.findOne({ email: email.toLowerCase() });
+    if (!user) {
+      throw { message: `Authentication failed: User not found.` };
+    }
+    // Log in the user or return a token
+    const token = jwt.sign({ userId: user._id }, "your-secret-key", {
+      expiresIn: "1h",
+    });
+    return { message: "Social login successful.", token, email };
+  } catch (error: any) {
+    // console.error("Social login failed:", error);
+    return { error: `Social login failed:${error.message || "Unknown error"}` };
+  }
+};
+
 //Signup function
 export const signUp = async (userDetails: userDetails) => {
   // Check if the username already exists

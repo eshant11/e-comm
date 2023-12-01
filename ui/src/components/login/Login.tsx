@@ -3,6 +3,7 @@ import {
   togglelogIn,
   loginComponentHandler,
   signinComponentHandler,
+  setCurrentUser,
 } from "../../Redux/Reducer/appReducer";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { logIn } from "../../service/logIn";
@@ -11,6 +12,8 @@ import {
   GoogleLoginResponseOffline,
   GoogleLogin,
 } from "react-google-login";
+import axios from "axios";
+import { UserData } from "../interface";
 
 export interface LoginForm {
   email: string;
@@ -25,6 +28,19 @@ const Login = () => {
   const [loginError, setLoginError] = useState<string>(""); // Initialize login error state
   const dispatch = useAppDispatch();
   const appState = useAppSelector((state) => state.app);
+  const currentUser = useAppSelector((state) => state.app.currentUser);
+
+  const mapGoogleAuthDataToUserData = (googleAuthData: any): UserData => {
+    return {
+      fullName: googleAuthData.name,
+      userName: googleAuthData.givenName, // Adjust this based on your requirements
+      email: googleAuthData.email,
+      phoneNumber: "", // You might not get phone number from Google authentication
+      password: "", // You might not get a password from Google authentication
+      confirm_Password: "", // You might not get a confirmation password from Google authentication
+      gender: "", // You might not get gender information from Google authentication
+    };
+  };
 
   const loginInputsHandle = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -65,12 +81,34 @@ const Login = () => {
     if ("tokenId" in res) {
       // Successful Google login, handle the response here
       console.log("LOGIN SUCCESS !!", res.profileObj);
-      dispatch(togglelogIn(true));
-      setTimeout(() => {
-        dispatch(loginComponentHandler(false));
-      }, 300);
+      const userInfo = mapGoogleAuthDataToUserData(res.profileObj);
+
+      // Make an API call to your server for social login
+      try {
+        axios
+          .get(`http://localhost:8080/api/social-login/${res.profileObj.email}`)
+          .then((response) => {
+            // Handle the response from the server
+
+            // Assuming you have some state management (dispatch) to handle the login
+            dispatch(togglelogIn(true));
+            dispatch(setCurrentUser(userInfo));
+            console.log("Social login response:", currentUser);
+
+            setTimeout(() => {
+              dispatch(loginComponentHandler(false));
+            }, 300);
+          })
+          .catch((error) => {
+            // Handle errors from the server
+            console.error("Social login error:", error);
+          });
+      } catch (error) {
+        console.log(error + "social login failed");
+      }
     }
   };
+
   const onFailure = (res: GoogleLoginResponse | GoogleLoginResponseOffline) => {
     // Google login failed, handle the error here
     console.log("LOGIN FAILED !!", res);

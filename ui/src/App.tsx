@@ -7,8 +7,9 @@ import Home from "./components/home/Home";
 import Occasion from "./components/occasion/Occasion";
 import Product from "./components/Product/Product";
 import ProductDeatils from "./components/Product/ProductDeatils";
-
+import MyAccount from "./components/account/MyAccount";
 import {} from "./Redux/Reducer/appReducer";
+
 function App() {
   return (
     <>
@@ -41,6 +42,7 @@ function App() {
           <Route path="/occasion" element={<Occasion />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/account" element={<MyAccount />}></Route>
         </Route>
       </Routes>
     </>

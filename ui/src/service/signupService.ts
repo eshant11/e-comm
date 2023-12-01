@@ -1,8 +1,8 @@
 import React from "react";
 import axios from "axios";
-import { FormData } from "../components/interface";
+import { UserData } from "../components/interface";
 
-const signupService = async (formData: FormData) => {
+const signupService = async (formData: UserData) => {
   try {
     const response = await axios.post(
       "http://localhost:8080/api/signUp",

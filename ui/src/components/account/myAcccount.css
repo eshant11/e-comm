@@ -1,0 +1,207 @@
+/* Container for the entire account section */
+.account-section {
+  display: flex;
+  height: 100vh;
+  margin-top: 20px;
+}
+
+.left-navbar {
+  max-width: 30%;
+  width: 100%;
+  padding: 20px;
+  border-right: 1px double lightgray;
+  transition: 0.1s ease-in-out;
+}
+
+.profile-container {
+  height: auto;
+  flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 1px solid lightgray;
+}
+.image-container {
+  position: relative;
+}
+.image-container:hover .overlay-text {
+  border-radius: 0px 0px 124px 124px;
+  width: 100%;
+  height: 50%;
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Add this line */
+}
+.image-container .overlay-text,
+.toggle-nav-button {
+  display: none;
+}
+
+.profile-container .profile-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 40%;
+  width: 100%;
+  margin-top: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-family: "Poppins", sans-serif;
+}
+.profile-content .mail {
+  text-transform: lowercase;
+}
+.profile-content p {
+  width: max-content;
+}
+.image-wrapper {
+  overflow: hidden; /* Add this line to hide overflowing content */
+  border-radius: 100px;
+  width: 200px;
+  height: 200px;
+  border: 3px solid var(--salmon-pink);
+}
+.image-wrapper img {
+  width: 200px;
+  height: 200px;
+}
+
+.left-navbar ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 5px;
+}
+
+.left-navbar li {
+  cursor: pointer;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: var(--white);
+  border-radius: 5px;
+  font-family: "Poppins", sans-serif;
+}
+.left-navbar li.active {
+  background-color: var(--salmon-pink);
+}
+
+.right-content {
+  width: 70%;
+  padding: 20px;
+}
+@media (max-width: 480px) {
+  .image-wrapper {
+    width: 100px;
+    height: 100px;
+  }
+  .mail {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .left-nav-open {
+    width: 100%;
+    max-width: 35%;
+    z-index: 18;
+    transform: translateX(0%);
+  }
+  .left-nav-close {
+    max-width: 0%;
+    visibility: hidden;
+    transform: translateX(-100%);
+  }
+  .toggle-nav-button {
+    position: fixed;
+    display: block;
+    top: 15%;
+    left: 2%;
+  }
+}
+/* Profile Css */
+#profile {
+  font-family: "Poppins", sans-serif;
+}
+.profile-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 400;
+}
+
+.profile-form input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  border: 1px solid lightgray;
+}
+.profile-form textarea {
+  width: 100%;
+  border: 1px solid lightgray;
+}
+.profile-form input,
+textarea:focus {
+  outline: none;
+  border-radius: 5px;
+}
+.profile-form button {
+  padding: 10px;
+  background-color: var(--salmon-pink);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/*Address  */
+.address label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.address input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.address input:focus {
+  outline: none;
+}
+
+.address button {
+  margin-right: 10px;
+  padding: 10px;
+  background-color: var(--salmon-pink);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 400;
+  font-family: "Poppins", sans-serif;
+}
+.button-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.address button.cancel {
+  background-color: white;
+  color: black;
+}

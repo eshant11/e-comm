@@ -8,7 +8,7 @@ export interface ProductInfo {
   offer: number;
   _id: string;
 }
-export interface FormData {
+export interface UserData {
   fullName: string;
   userName: string;
   email: string;

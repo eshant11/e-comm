@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { signIn, signUp } from "../service/authService";
+import { signIn, signUp, socialLogIn } from "../service/authService";
 
 export const login = async (req: Request, res: Response) => {
   try {
@@ -9,6 +9,18 @@ export const login = async (req: Request, res: Response) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Authentication failed." });
+  }
+};
+
+// Social login
+export const socialLoginHandler = async (req: Request, res: Response) => {
+  try {
+    const { email } = req.params;
+    const token = await socialLogIn(email);
+    res.status(200).json({ token: token });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Social login failed." });
   }
 };
 

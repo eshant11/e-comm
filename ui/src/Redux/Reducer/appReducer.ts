@@ -7,6 +7,7 @@ const initialState: App = {
   showLogin: false,
   showSignUp: false,
   toggleMenu: false,
+  currentUser: undefined,
 };
 
 export const appSlice = createSlice({
@@ -29,6 +30,10 @@ export const appSlice = createSlice({
       state.showSignUp = action.payload;
       console.log(state.showSignUp + "you are on signup page");
     },
+    setCurrentUser: (state, action) => {
+      state.currentUser = action.payload;
+      console.log(state.currentUser + "Current user");
+    },
   },
 });
 export const {
@@ -36,6 +41,7 @@ export const {
   toggleMenuHandler,
   loginComponentHandler,
   signinComponentHandler,
+  setCurrentUser,
 } = appSlice.actions;
 
 export default appSlice.reducer;

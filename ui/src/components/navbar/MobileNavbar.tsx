@@ -18,13 +18,16 @@ import {
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import {
   loginComponentHandler,
+  setCurrentUser,
   toggleMenuHandler,
   togglelogIn,
 } from "../../Redux/Reducer/appReducer";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const MobileNavbar = () => {
   const [isProductSubMenuOpen, setProductSubMenuOpen] = useState(false);
   const [signInDropdownVisible, setSignInDropdownVisible] = useState(false);
+  const navigate = useNavigate();
 
   //to open signin drowpdown in mobile view
   const toggleSignInDropdown = () => {
@@ -76,7 +79,7 @@ const MobileNavbar = () => {
           <span className="count">0</span>
         </button>
 
-        <button className="action-btn">
+        <button className="action-btn" onClick={() => navigate("/")}>
           <Home color={"#00000"} title={""} />
         </button>
 
@@ -124,8 +127,23 @@ const MobileNavbar = () => {
                     </button>
                   ) : (
                     <>
-                      <a href="#">My Account</a>
-                      <button onClick={handleSignInClick}>
+                      <NavLink
+                        to={"/account"}
+                        onClick={() => {
+                          toggleSignInDropdown();
+                          menuToggleCloseHandler();
+                        }}
+                      >
+                        My Account
+                      </NavLink>
+                      <button
+                        onClick={() => {
+                          toggleSignInDropdown();
+                          menuToggleCloseHandler();
+                          handleSignInClick();
+                          dispatch(setCurrentUser(undefined));
+                        }}
+                      >
                         <a href="#">Sign Out</a>
                       </button>
                     </>
@@ -135,9 +153,9 @@ const MobileNavbar = () => {
             </div>
           </li>
           <li className="menu-category">
-            <a href="#" className="menu-title">
+            <NavLink to={`/`} className="menu-title">
               Home
-            </a>
+            </NavLink>
           </li>
 
           <li className="menu-category">

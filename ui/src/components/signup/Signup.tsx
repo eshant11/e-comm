@@ -6,7 +6,7 @@ import {
   togglelogIn,
 } from "../../Redux/Reducer/appReducer";
 import signupService from "../../service/signupService";
-import { FormData } from "../interface";
+import { UserData } from "../interface";
 import GoogleLogin, {
   GoogleLoginResponse,
   GoogleLoginResponseOffline,
@@ -20,7 +20,7 @@ const Signup = () => {
   };
 
   //Signup value
-  const signupFormData: FormData = {
+  const signupFormData: UserData = {
     fullName: "",
     userName: "",
     email: "",
@@ -29,7 +29,7 @@ const Signup = () => {
     confirm_Password: "",
     gender: "male", // Provide a default value
   };
-  const [formData, setFormData] = useState<FormData>(signupFormData);
+  const [formData, setFormData] = useState<UserData>(signupFormData);
   // to dispaly error message in form filing
   const [emailError, setEmailError] = useState<string>("");
   const [mobileNumberError, setMobileNumberError] = useState<string>("");
@@ -93,7 +93,7 @@ const Signup = () => {
       // Extract data from Google profile
       const { email, name } = res.profileObj;
 
-      const googleSignUpData: FormData = {
+      const googleSignUpData: UserData = {
         fullName: name,
         email: email,
         userName: "",

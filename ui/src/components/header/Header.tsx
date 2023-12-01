@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import {
   togglelogIn,
   loginComponentHandler,
+  setCurrentUser,
 } from "../../Redux/Reducer/appReducer";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import {
@@ -28,6 +29,7 @@ const Header = () => {
 
   const handleSignOutClick = () => {
     dispatch(togglelogIn(false));
+    dispatch(setCurrentUser(undefined));
 
     console.log("User signed out.", appState.isLoggedIn);
   };
@@ -39,8 +41,9 @@ const Header = () => {
     gapi.load("client:auth2", () => {
       // Initialize the Google API client
       gapi.client.init({
-        clientId: "YOUR_CLIENT_ID",
-        plugin_name: "chat",
+        clientId:
+          "8325908074-23coorhho96dbaf179vk0ng3ne4v619s.apps.googleusercontent.com",
+        // plugin_name: "chat",
       });
     });
   }, []);
@@ -116,14 +119,18 @@ const Header = () => {
               <div className="dropdown-content">
                 {!appState.isLoggedIn ? (
                   <button onClick={loginHandler}>
-                    <a href="#">Sign In</a>
+                    <a href="#" className="sign-in">
+                      Sign In
+                    </a>
                   </button>
                 ) : (
                   <>
-                    <a href="#">My Account</a>
+                    <NavLink to={`/account`} className="my-account">
+                      My Account
+                    </NavLink>
 
                     <GoogleLogout
-                      clientId="YOUR_CLIENT_ID"
+                      clientId="8325908074-23coorhho96dbaf179vk0ng3ne4v619s.apps.googleusercontent.com"
                       buttonText="Logout"
                       onLogoutSuccess={handleSignOutClick}
                       className="logout-btn"
@@ -147,12 +154,11 @@ const Header = () => {
       </div>
 
       <DesktopNavbar />
+      <MobileNavbar />
       {appState.showLogin ? <Login /> : null}
       {appState.showSignUp ? <Signup /> : null}
 
       {/* MOBILE */}
-
-      <MobileNavbar />
     </header>
   );
 };

@@ -28,6 +28,10 @@ const userSchema = new mongoose.Schema({
     default: "Other",
   },
   id: Number,
+  profileImage: {
+    data: Buffer, // Binary image data
+    contentType: String, // Content type of the image (e.g., 'image/jpeg')
+  },
 });
 
 //Creating a model
