@@ -30,14 +30,18 @@ const Profile = () => {
         />
 
         <label htmlFor="pass">Password:</label>
-        <input type="password" id="pass" name="password" required />
-
+        <input
+          type="password"
+          id="pass"
+          name="password"
+          placeholder="***********"
+        />
         <label htmlFor="confirm-pass">Confirm Password:</label>
         <input
           type="password"
           id="confirm-pass"
           name="confirm-password"
-          required
+          placeholder="***********"
         />
 
         <label htmlFor="address">Address:</label>
@@ -49,7 +53,6 @@ const Profile = () => {
           id="mobile-number"
           name="mobile-number"
           pattern="[0-9]{10}"
-          required
         />
 
         <button type="submit">Update</button>

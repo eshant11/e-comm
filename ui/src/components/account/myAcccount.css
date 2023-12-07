@@ -59,6 +59,7 @@
   text-transform: uppercase;
   font-family: "Poppins", sans-serif;
 }
+
 .profile-content .mail {
   text-transform: lowercase;
 }
@@ -153,6 +154,7 @@
 textarea:focus {
   outline: none;
   border-radius: 5px;
+  color: black;
 }
 .profile-form button {
   padding: 10px;

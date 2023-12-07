@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import {
   togglelogIn,
   loginComponentHandler,
@@ -26,11 +26,12 @@ import { GoogleLogout } from "react-google-login";
 const Header = () => {
   const appState = useAppSelector((state) => state.app);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const handleSignOutClick = () => {
     dispatch(togglelogIn(false));
     dispatch(setCurrentUser(undefined));
-
+    navigate("/");
     console.log("User signed out.", appState.isLoggedIn);
   };
   const loginHandler = () => {
@@ -145,7 +146,7 @@ const Header = () => {
               <span className="count">0</span>
             </button>
 
-            <button className="action-btn">
+            <button className="action-btn" onClick={() => navigate("/cart")}>
               <Bag color={"#00000"} title={""} />
               <span className="count">0</span>
             </button>

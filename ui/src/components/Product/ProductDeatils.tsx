@@ -1,13 +1,16 @@
 import { StarOutline } from "react-ionicons";
 import { Star } from "react-ionicons";
 import { useParams } from "react-router-dom";
-import { useAppSelector } from "../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { RootState } from "../../app/store";
 import { ProductInfo } from "../interface";
-import ProductCart from "./ProductCart";
 import SimilarProductSuggestion from "./SimilarProductSuggestion";
+import { loginComponentHandler } from "../../Redux/Reducer/appReducer";
 
 const ProductDeatils = () => {
+  const dispatch = useAppDispatch();
+  const isLoggedIn = useAppSelector((state) => state.app.isLoggedIn);
+
   // to access the product id from url route
   const { productId, category } = useParams();
 
@@ -78,8 +81,24 @@ const ProductDeatils = () => {
 
                   <del>₹{selectedProduct?.offer}</del>
                 </div>
-
-                <button className="add-cart-btn">add to cart</button>
+                <div className="add-buy-btn">
+                  <button
+                    className="add-cart-btn"
+                    onClick={() =>
+                      !isLoggedIn && dispatch(loginComponentHandler(true))
+                    }
+                  >
+                    add to cart
+                  </button>
+                  <button
+                    className="buy-now-btn"
+                    onClick={() =>
+                      !isLoggedIn && dispatch(loginComponentHandler(true))
+                    }
+                  >
+                    buy now
+                  </button>
+                </div>
 
                 <div className="showcase-status">
                   <div className="wrapper">

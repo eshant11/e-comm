@@ -9,6 +9,7 @@ import Product from "./components/Product/Product";
 import ProductDeatils from "./components/Product/ProductDeatils";
 import MyAccount from "./components/account/MyAccount";
 import {} from "./Redux/Reducer/appReducer";
+import MyCart from "./components/myCart/MyCart";
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/account" element={<MyAccount />}></Route>
+          <Route path="/cart" element={<MyCart />} />
         </Route>
       </Routes>
     </>

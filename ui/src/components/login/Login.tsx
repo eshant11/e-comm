@@ -77,7 +77,9 @@ const Login = () => {
 
   //For social login
 
-  const onSuccess = (res: GoogleLoginResponse | GoogleLoginResponseOffline) => {
+  const onSuccess = async (
+    res: GoogleLoginResponse | GoogleLoginResponseOffline
+  ) => {
     if ("tokenId" in res) {
       // Successful Google login, handle the response here
       console.log("LOGIN SUCCESS !!", res.profileObj);
@@ -85,24 +87,17 @@ const Login = () => {
 
       // Make an API call to your server for social login
       try {
-        axios
-          .get(`http://localhost:8080/api/social-login/${res.profileObj.email}`)
-          .then((response) => {
-            // Handle the response from the server
+        const response = axios.get(
+          `http://localhost:8080/api/social-login/${res.profileObj.email}`
+        );
+        // Assuming you have some state management (dispatch) to handle the login
+        dispatch(togglelogIn(true));
+        dispatch(setCurrentUser(userInfo));
+        console.log("Social login response:", currentUser);
 
-            // Assuming you have some state management (dispatch) to handle the login
-            dispatch(togglelogIn(true));
-            dispatch(setCurrentUser(userInfo));
-            console.log("Social login response:", currentUser);
-
-            setTimeout(() => {
-              dispatch(loginComponentHandler(false));
-            }, 300);
-          })
-          .catch((error) => {
-            // Handle errors from the server
-            console.error("Social login error:", error);
-          });
+        setTimeout(() => {
+          dispatch(loginComponentHandler(false));
+        }, 300);
       } catch (error) {
         console.log(error + "social login failed");
       }

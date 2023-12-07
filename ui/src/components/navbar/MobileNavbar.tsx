@@ -56,6 +56,13 @@ const MobileNavbar = () => {
     console.log(appState.isLoggedIn);
   };
 
+  const handleSignOut = () => {
+    toggleSignInDropdown();
+    menuToggleCloseHandler();
+    handleSignInClick();
+    dispatch(setCurrentUser(undefined));
+    navigate("/");
+  };
   // for mobile login component
   const mobileLoginHandler = () => {
     setSignInDropdownVisible(!signInDropdownVisible);
@@ -138,10 +145,7 @@ const MobileNavbar = () => {
                       </NavLink>
                       <button
                         onClick={() => {
-                          toggleSignInDropdown();
-                          menuToggleCloseHandler();
-                          handleSignInClick();
-                          dispatch(setCurrentUser(undefined));
+                          handleSignOut();
                         }}
                       >
                         <a href="#">Sign Out</a>
