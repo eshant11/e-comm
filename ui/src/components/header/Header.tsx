@@ -37,6 +37,12 @@ const Header = () => {
   const loginHandler = () => {
     dispatch(loginComponentHandler(true));
   };
+
+  const openCartHandler = () => {
+    !appState.isLoggedIn
+      ? dispatch(loginComponentHandler(true))
+      : navigate("/cart");
+  };
   useEffect(() => {
     // Load the Google API client and the auth2 library
     gapi.load("client:auth2", () => {
@@ -146,7 +152,7 @@ const Header = () => {
               <span className="count">0</span>
             </button>
 
-            <button className="action-btn" onClick={() => navigate("/cart")}>
+            <button className="action-btn" onClick={() => openCartHandler()}>
               <Bag color={"#00000"} title={""} />
               <span className="count">0</span>
             </button>

@@ -5,6 +5,7 @@
 @import "./components/header/header.css";
 @import "./components/Product/product.css";
 @import "./components/account/myAcccount.css";
+@import "./components/myCart/myCart.css";
 
 :root {
   /**
@@ -1519,6 +1520,10 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .product-grid .showcase {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
   border: 1px solid var(--cultured);
   -webkit-border-radius: var(--border-radius-md);
   border-radius: var(--border-radius-md);
@@ -1528,18 +1533,18 @@ body::-webkit-scrollbar-thumb:hover {
   transition: var(--transition-timing);
 }
 
-.product-grid .showcase:hover {
+/* .product-grid .showcase:hover {
   -webkit-box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.1);
   box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.1);
-}
+} */
 
 .product-grid .showcase-banner {
   position: relative;
 }
 
 .product-grid .product-img {
-  width: 100%;
-  height: 100%;
+  /* width: 100%;
+  height: 100%; */
   -o-object-fit: cover;
   object-fit: cover;
   -webkit-transition: var(--transition-timing);
@@ -1552,21 +1557,21 @@ body::-webkit-scrollbar-thumb:hover {
   z-index: 1;
 }
 
-.product-grid .product-img.hover {
+/* .product-grid .product-img.hover {
   position: absolute;
   top: 0;
   left: 0;
   z-index: 2;
   opacity: 0;
-}
+} */
 
-.product-grid .showcase:hover .product-img.hover {
+/* .product-grid .showcase:hover .product-img.hover {
   opacity: 1;
 }
 
 .product-grid .showcase:hover .product-img.default {
   opacity: 0;
-}
+} */
 
 .product-grid .showcase:hover .product-img {
   -webkit-transform: scale(1.1);
@@ -2833,13 +2838,20 @@ footer {
     color: inherit !important;
   }
   .dropdown-content .logout-btn div {
-    visibility: hidden;
+    display: none;
+    /* width: 0; */
   }
   .dropdown-content .logout-btn span {
-    font-size: larger;
+    max-width: 100% !important;
+    font-size: 18px;
+    z-index: 5;
+    margin: 0 25%;
   }
 }
 .dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+.dropdown-content .logout-btn span:hover {
   background-color: #f1f1f1;
 }
 
@@ -3186,8 +3198,8 @@ footer {
 }
 
 .product-grid {
-  -ms-grid-columns: (1fr) (3);
-  grid-template-columns: repeat(3, 1fr);
+  -ms-grid-columns: (1fr) (1);
+  grid-template-columns: repeat(1, 1fr);
 }
 
 /**
@@ -3330,7 +3342,7 @@ footer {
 
   .product-grid {
     -ms-grid-columns: (1fr) (4);
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(1, 1fr);
   }
 
   /**

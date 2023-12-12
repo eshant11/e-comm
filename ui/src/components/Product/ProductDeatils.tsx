@@ -6,13 +6,19 @@ import { RootState } from "../../app/store";
 import { ProductInfo } from "../interface";
 import SimilarProductSuggestion from "./SimilarProductSuggestion";
 import { loginComponentHandler } from "../../Redux/Reducer/appReducer";
+import { useState } from "react";
+import { addToCart } from "../../Redux/Reducer/cart";
 
 const ProductDeatils = () => {
   const dispatch = useAppDispatch();
   const isLoggedIn = useAppSelector((state) => state.app.isLoggedIn);
+  const ItemAddToCart = useAppSelector((state) => state.cart.cartItems);
 
   // to access the product id from url route
   const { productId, category } = useParams();
+
+  // to show popUp for item added to cart
+  const [showPopup, setShowPopup] = useState(false);
 
   // getting product list from redux store
   const searchResults = useAppSelector(
@@ -29,6 +35,29 @@ const ProductDeatils = () => {
     (product) =>
       product._id === productId && product.productCategory === category
   );
+
+  const handleAddToCart = () => {
+    // Dispatch action to add item to cart
+    !isLoggedIn && dispatch(loginComponentHandler(true));
+
+    //checking item  has been already added to the cart
+    const isItemInCart = ItemAddToCart.some(
+      (item) => item._id === selectedProduct?._id
+    );
+    if (!isItemInCart && selectedProduct?.availablity) {
+      dispatch(addToCart(selectedProduct));
+
+      // Show the popup
+      setShowPopup(true);
+    } else {
+      console.log("Item is already in the cart!");
+      setShowPopup(true);
+    }
+    // Hide the popup after 2 seconds
+    setTimeout(() => {
+      setShowPopup(false);
+    }, 2000);
+  };
 
   // If product not found in search results, look in the product list
   if (!selectedProduct) {
@@ -82,12 +111,7 @@ const ProductDeatils = () => {
                   <del>₹{selectedProduct?.offer}</del>
                 </div>
                 <div className="add-buy-btn">
-                  <button
-                    className="add-cart-btn"
-                    onClick={() =>
-                      !isLoggedIn && dispatch(loginComponentHandler(true))
-                    }
-                  >
+                  <button className="add-cart-btn" onClick={handleAddToCart}>
                     add to cart
                   </button>
                   <button
@@ -110,8 +134,22 @@ const ProductDeatils = () => {
                       )}
                     </p>
                   </div>
-
                   <div className="showcase-status-bar"></div>
+                  {selectedProduct?.availablity && showPopup && (
+                    <div className={showPopup ? "popup show" : "popup"}>
+                      Product is added to the cart!{" "}
+                    </div>
+                  )}
+                  {/* if prooduct is not available */}
+                  {!selectedProduct?.availablity && (
+                    <div
+                      className={
+                        showPopup ? "popup show not-available" : "popup"
+                      }
+                    >
+                      Product is currently not available.
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

@@ -29,6 +29,13 @@ const MobileNavbar = () => {
   const [signInDropdownVisible, setSignInDropdownVisible] = useState(false);
   const navigate = useNavigate();
 
+  //To open cart conditionally
+  const openCartHandler = () => {
+    !appState.isLoggedIn
+      ? dispatch(loginComponentHandler(true))
+      : navigate("/cart");
+  };
+
   //to open signin drowpdown in mobile view
   const toggleSignInDropdown = () => {
     setSignInDropdownVisible(!signInDropdownVisible);
@@ -80,7 +87,7 @@ const MobileNavbar = () => {
           <Menu color={"#00000"} title={""} />
         </button>
 
-        <button className="action-btn">
+        <button className="action-btn" onClick={() => openCartHandler()}>
           <Bag color={"#00000"} title={""} />
 
           <span className="count">0</span>

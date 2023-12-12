@@ -42,16 +42,17 @@ const MyAccount = () => {
   };
   return (
     <div className={"account-section"}>
-      <button className="toggle-nav-button" onClick={handleToggleNav}>
+      {/* Left Navbar */}
+      <button
+        className={!isNavOpen ? "toggle-nav-btn close" : "toggle-nav-btn "}
+        onClick={handleToggleNav}
+      >
         {isNavOpen ? (
           <Menu color={"#00000"} title={""} />
         ) : (
           <Close color={"#00000"} title={""} />
         )}
       </button>
-
-      {/* Left Navbar */}
-
       <div
         className={`left-navbar ${
           !isNavOpen ? "left-nav-open" : "left-nav-close"
@@ -109,7 +110,7 @@ const MyAccount = () => {
       </div>
 
       {/* Right Content */}
-      <div className="right-content">
+      <div className={`right-content ${!isNavOpen ? "full-width" : ""}`}>
         {selectedOption === "profile" && <Profile />}
         {selectedOption === "orders" && <Order />}
         {selectedOption === "address" && <Address />}

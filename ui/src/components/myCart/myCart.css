@@ -1,0 +1,74 @@
+/* MyCart.css */
+
+.my-cart {
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.showcase-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.showcase-btn .selector {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 10px;
+  align-items: flex-start;
+}
+.showcase-btn .selector input {
+  width: 60px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+.showcase-btn .selector input:focus {
+  outline: none;
+}
+.showcase-btn .selector button {
+  width: 30px;
+  border-radius: 15px;
+  border: 1px solid var(--onyx);
+  font-size: large;
+  font-weight: 550;
+}
+.showcase-btn .selector button:hover {
+  width: 30px;
+  border-radius: 20px;
+  background-color: var(--primary-color);
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.remove-btn {
+  width: 50px;
+  background-color: var(--white);
+  font-family: inherit;
+  box-shadow: 2px 2px 2px rgb(0, 0, 0, 0.27);
+  font-size: larger;
+  padding: 3px 5px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin-left: 1%;
+  margin-top: 5%;
+  border-radius: 20px;
+}
+.remove-btn:hover {
+  background-color: var(--white);
+  color: var(--sonic-silver);
+}
+.total-price {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 18px;
+}

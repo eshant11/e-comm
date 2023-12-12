@@ -8,7 +8,7 @@
 .left-navbar {
   max-width: 30%;
   width: 100%;
-  padding: 20px;
+  padding: 0px 20px;
   border-right: 1px double lightgray;
   transition: 0.1s ease-in-out;
 }
@@ -43,8 +43,13 @@
   justify-content: center; /* Add this line */
 }
 .image-container .overlay-text,
-.toggle-nav-button {
+.toggle-nav-btn {
   display: none;
+}
+
+.toggle-nav-btn .close {
+  top: 0%;
+  left: 2%;
 }
 
 .profile-container .profile-content {
@@ -97,17 +102,9 @@
 }
 
 .right-content {
-  width: 70%;
+  width: 100%;
+  max-width: 70%;
   padding: 20px;
-}
-@media (max-width: 480px) {
-  .image-wrapper {
-    width: 100px;
-    height: 100px;
-  }
-  .mail {
-    font-size: 10px;
-  }
 }
 
 @media (max-width: 1024px) {
@@ -122,13 +119,33 @@
     visibility: hidden;
     transform: translateX(-100%);
   }
-  .toggle-nav-button {
+  .toggle-nav-btn {
     position: fixed;
     display: block;
     top: 15%;
     left: 2%;
   }
+  .full-width {
+    width: 100%;
+  }
 }
+
+@media (max-width: 748px) {
+  .left-nav-open {
+    max-width: 50%;
+  }
+}
+
+@media (max-width: 480px) {
+  .image-wrapper {
+    width: 100px;
+    height: 100px;
+  }
+  .mail {
+    font-size: 10px;
+  }
+}
+
 /* Profile Css */
 #profile {
   font-family: "Poppins", sans-serif;

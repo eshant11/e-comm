@@ -18,6 +18,33 @@
   left: -22px;
   top: 25% !important;
 }
+
+/* Add this CSS to your component's styles or a separate stylesheet */
+.popup {
+  position: fixed;
+  top: 10%;
+  right: -5%;
+  transform: translateX(-5%);
+  background-color: #28a745; /* Green color, you can change this */
+  color: #fff; /* White text, you can change this */
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  opacity: 0; /* Initially hidden */
+  transition: opacity 2s ease-out right 2s ease-out;
+  text-transform: capitalize;
+}
+
+.popup.show {
+  opacity: 0.8; /* Show the popup */
+  right: 0%;
+}
+.not-available {
+  background-color: red;
+}
 @media (max-width: 768px) {
   .slick-next {
     right: -17px;
