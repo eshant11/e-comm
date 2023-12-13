@@ -197,27 +197,27 @@ const MobileNavbar = () => {
                 data-accordion
               >
                 <li className="submenu-category">
-                  <a href="#" className="submenu-title">
+                  <NavLink to="/product/sweet" className="submenu-title">
                     Sweets
-                  </a>
+                  </NavLink>
                 </li>
 
                 <li className="submenu-category">
-                  <a href="#" className="submenu-title">
+                  <NavLink to="/product/namkeen" className="submenu-title">
                     Namkeen
-                  </a>
+                  </NavLink>
                 </li>
 
                 <li className="submenu-category">
-                  <a href="#" className="submenu-title">
+                  <NavLink to="/product/cookies" className="submenu-title">
                     Cookies
-                  </a>
+                  </NavLink>
                 </li>
 
                 <li className="submenu-category">
-                  <a href="#" className="submenu-title">
+                  <NavLink to="/product/cakes" className="submenu-title">
                     Cakes
-                  </a>
+                  </NavLink>
                 </li>
                 <li className="submenu-category">
                   <a href="#" className="submenu-title">
