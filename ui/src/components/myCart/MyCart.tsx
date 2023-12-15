@@ -1,11 +1,40 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { ProductInfo } from "../interface";
-import { Eye, Heart, Star, StarOutline, Trash } from "react-ionicons";
-import { removeItem } from "../../Redux/Reducer/cart";
+import { Star, StarOutline, Trash } from "react-ionicons";
+import { removeItem, itemCountHandle } from "../../Redux/Reducer/cart";
 
 const MyCart = () => {
   const dispatch = useAppDispatch();
+  const [itemCount, setItemCount] = useState<any>({});
+
+  const increaseItem = (productId: any) => {
+    setItemCount((prevCount: any) => ({
+      ...prevCount,
+      [productId]: (prevCount[productId] || 0) + 1,
+    }));
+  };
+
+  const decreaseItem = (productId: any) => {
+    setItemCount((prevCounts: any) => {
+      const currentCount = prevCounts[productId] || 0;
+      return {
+        ...prevCounts, // shallow copy of  state
+        [productId]: currentCount > 0 ? currentCount - 1 : 0,
+      };
+    });
+  };
+
+  useEffect(() => {
+    // to calculate the total  count of aal the value of the items from the object
+    const totalCount = Object.values(itemCount).reduce(
+      (total: any, count: any) => total + count,
+      0 //initial value 0
+    );
+
+    // Dispatch the itemCountHandle action when itemCount changes
+    dispatch(itemCountHandle(totalCount));
+  }, [itemCount, dispatch]);
 
   const cartItems: ProductInfo[] = useAppSelector(
     (state) => state.cart.cartItems
@@ -23,8 +52,19 @@ const MyCart = () => {
   };
 
   // To delete the item from the cart
-  const deleteItem = (index: number) => {
+  const deleteItem = (index: any) => {
     dispatch(removeItem(index));
+
+    // Create a copy of the itemCount state
+    const updatedItemCount = { ...itemCount };
+
+    // Set the count for the deleted item to 0
+    updatedItemCount[index] = 0;
+
+    // Update the state with the new itemCount
+    if (itemCount[index] > 0) {
+      setItemCount((itemCount[index] = updatedItemCount));
+    }
   };
   return (
     <div className="my-cart">
@@ -67,9 +107,9 @@ const MyCart = () => {
             </div>
             <div className="showcase-btn">
               <div className="selector">
-                <button>-</button>
-                <input type="number" />
-                <button>+</button>
+                <button onClick={() => decreaseItem(index)}>-</button>
+                <input type="number" value={itemCount[index]} />
+                <button onClick={() => increaseItem(index)}>+</button>
               </div>
               <button className="remove-btn" onClick={() => deleteItem(index)}>
                 <Trash color={"hsl(0, 100%, 70%)"} title={""} />

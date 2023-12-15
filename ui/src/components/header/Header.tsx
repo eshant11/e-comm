@@ -27,6 +27,7 @@ const Header = () => {
   const appState = useAppSelector((state) => state.app);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const itemCount = useAppSelector((state) => state.cart.itemCount);
 
   const handleSignOutClick = () => {
     dispatch(togglelogIn(false));
@@ -154,7 +155,7 @@ const Header = () => {
 
             <button className="action-btn" onClick={() => openCartHandler()}>
               <Bag color={"#00000"} title={""} />
-              <span className="count">0</span>
+              <span className="count">{itemCount}</span>
             </button>
           </div>
         </div>

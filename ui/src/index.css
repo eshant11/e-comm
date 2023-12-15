@@ -443,10 +443,11 @@ body::-webkit-scrollbar-thumb:hover {
   color: var(--onyx);
   padding: 10px 15px;
   padding-right: 50px;
-  border: 1px solid var(--cultured);
+  border: 2px solid var(--cultured);
   -webkit-border-radius: var(--border-radius-md);
   border-radius: var(--border-radius-md);
   width: 100%;
+  outline: none;
 }
 
 .search-field::-webkit-search-cancel-button {
@@ -2621,9 +2622,9 @@ footer {
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     -webkit-box-pack: center;
-    -webkit-justify-content: center;
+    -webkit-justify-content: flex-start;
     -ms-flex-pack: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 20px;
   }
 
