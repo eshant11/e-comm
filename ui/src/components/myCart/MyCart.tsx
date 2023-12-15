@@ -46,7 +46,10 @@ const MyCart = () => {
       return "0.0";
     } else {
       return cartItems
-        .reduce((total, item) => total + item.price, 0)
+        .reduce(
+          (total, item, index) => total + item.price * (itemCount[index] || 0),
+          0
+        )
         .toFixed(2);
     }
   };
