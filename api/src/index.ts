@@ -4,6 +4,12 @@ import mongoose from "mongoose";
 import * as authController from "./controller/authController";
 import * as productController from "./controller/productController";
 import * as uploadImageController from "./controller/uploadImageController";
+import {
+  addItem,
+  getCart,
+  removeItem,
+  updateQuantity,
+} from "./controller/cartController";
 
 const cors = require("cors");
 // Create an Express application
@@ -77,6 +83,16 @@ app.get("/api/product/cookies", productController.getCookiesProducts);
 //namkeen
 app.get("/api/product/cakes", productController.getCakesProducts);
 
+// Define routes fo cart
+app.post("/api/cart/addItem", addItem);
+
+app.post("/api/cart/updateQuantity", updateQuantity);
+
+app.post("/api/cart/removeItem", removeItem);
+
+app.get("/api/cart", getCart);
+
+app.get("/api/products/:productId", productController.getProductFromCart);
 // Route for image upload
 // app.post(
 //   "/api/upload",

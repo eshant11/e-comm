@@ -12,7 +12,7 @@ import {
   LogoLinkedin,
   PersonSharp,
   Heart,
-  Bag,
+  Cart,
 } from "react-ionicons";
 import Login from "../login/Login";
 import Signup from "../signup/Signup";
@@ -27,7 +27,9 @@ const Header = () => {
   const appState = useAppSelector((state) => state.app);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const itemCount = useAppSelector((state) => state.cart.itemCount);
+  const userCartItemCount = useAppSelector(
+    (state) => state.cart.cartDetails.product.length
+  );
 
   const handleSignOutClick = () => {
     dispatch(togglelogIn(false));
@@ -154,8 +156,10 @@ const Header = () => {
             </button>
 
             <button className="action-btn" onClick={() => openCartHandler()}>
-              <Bag color={"#00000"} title={""} />
-              <span className="count">{itemCount}</span>
+              <Cart color={"#00000"} title={""} />
+              <span className="count">
+                {appState.isLoggedIn ? userCartItemCount : 0}
+              </span>
             </button>
           </div>
         </div>

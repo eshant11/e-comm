@@ -74,4 +74,38 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 .selector input {
   text-align: center;
+  border: 1px solid var(--onyx);
 }
+
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+/* Style for table header */
+.cart-table th {
+  background-color: #f2f2f2;
+  padding: 10px;
+  text-align: left;
+  font-weight: bold;
+}
+
+/* Style for table rows */
+.cart-table td {
+  border: none;
+  padding: 10px;
+}
+
+/* Style for the total row */
+.cart-table .total-row {
+  font-weight: bold;
+  background-color: #e6f7ff;
+}
+
+/* Style for the message when the cart is empty */
+/* p {
+  margin-top: 20px;
+  text-align: center;
+  font-weight: bold;
+} */

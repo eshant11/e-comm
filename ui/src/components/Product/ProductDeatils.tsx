@@ -8,11 +8,13 @@ import SimilarProductSuggestion from "./SimilarProductSuggestion";
 import { loginComponentHandler } from "../../Redux/Reducer/appReducer";
 import { useState } from "react";
 import { addToCart } from "../../Redux/Reducer/cart";
+import axios from "axios";
 
 const ProductDeatils = () => {
   const dispatch = useAppDispatch();
   const isLoggedIn = useAppSelector((state) => state.app.isLoggedIn);
   const ItemAddToCart = useAppSelector((state) => state.cart.cartItems);
+  const currentUser = useAppSelector((state) => state.app.currentUser);
 
   // to access the product id from url route
   const { productId, category } = useParams();
@@ -36,7 +38,7 @@ const ProductDeatils = () => {
       product._id === productId && product.productCategory === category
   );
 
-  const handleAddToCart = () => {
+  const handleAddToCart = async () => {
     // Dispatch action to add item to cart
     !isLoggedIn && dispatch(loginComponentHandler(true));
 
@@ -47,8 +49,19 @@ const ProductDeatils = () => {
     if (!isItemInCart && selectedProduct?.availablity) {
       dispatch(addToCart(selectedProduct));
 
-      // Show the popup
-      setShowPopup(true);
+      // Send the added product to the backend using Axios
+      try {
+        await axios.post("http://localhost:8080/api/cart/addItem", {
+          email: currentUser?.email, // Replace with the user's email or get it from the authentication state
+          productId: selectedProduct?._id,
+          productQuantity: 1, // You may adjust the quantity as needed
+        });
+
+        // Show the popup
+        setShowPopup(true);
+      } catch (error) {
+        console.error("Error adding product to the cart:", error);
+      }
     } else {
       console.log("Item is already in the cart!");
       setShowPopup(true);

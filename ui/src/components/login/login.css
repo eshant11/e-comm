@@ -98,43 +98,23 @@ body:has(.active-login) {
   margin-bottom: 10px;
 }
 
-.social-login .login-container1 {
-  width: 97%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
-
-.login-container1 .google-login {
-  color: white;
-  max-width: fit-content;
-  display: inline-block;
-  margin-right: 10%;
-  padding: 0;
-  border: none;
-  vertical-align: middle; /* Add this line */
-  border-radius: 20px;
-}
-.google-login .customGoogleButton {
+.customGoogleButton {
   height: 30px;
   width: 30px;
   box-shadow: none !important;
   border: none !important;
+  justify-content: center;
+  border: 1px solid var(--secondary-color);
+}
+.customGoogleButton button {
+  height: 38px;
+}
+.customGoogleButton span {
+  font-size: larger;
+  font-weight: 600;
+  color: inherit;
 }
 
-.login-container1 .apple-login {
-  color: white;
-  max-width: fit-content;
-  display: inline-block;
-  margin-left: 4%;
-  border: none;
-  vertical-align: middle; /* Add this line */
-}
-.social-login .apple-login img {
-  height: 30px;
-  width: 24.37px;
-}
 .signup-link {
   font-size: small;
 }

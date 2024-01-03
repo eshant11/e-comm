@@ -516,7 +516,7 @@ body::-webkit-scrollbar-thumb:hover {
   position: absolute;
   top: 0;
   right: 0;
-  font-size: 12px;
+  font-size: 20px;
   font-weight: var(--weight-500);
   line-height: 1;
   padding: 2px 4px;
@@ -2874,7 +2874,7 @@ footer {
   right: -3px;
   background: var(--bittersweet);
   color: var(--white);
-  font-size: 12px;
+  font-size: 16px;
   font-weight: var(--weight-500);
   line-height: 1;
   padding: 2px 4px;
@@ -3298,7 +3298,9 @@ footer {
   .desktop-menu-category-list {
     gap: 45px;
   }
-
+  .header-user-actions .count {
+    font-size: 18px;
+  }
   /**
    * #BANNER
    */
@@ -3426,10 +3428,12 @@ footer {
    */
 
   .container {
-    margin-top: 5%;
+    margin-top: 3%;
     max-width: 1350px;
   }
-
+  .header-user-actions .count {
+    font-size: 20px;
+  }
   /**
    * #BANNER
    */

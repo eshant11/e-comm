@@ -21,6 +21,10 @@ const productSchema = new mongoose.Schema({
   imageUrl: {
     type: String,
   },
+  count: {
+    type: Number,
+    default: 0,
+  },
 });
 
 //Creating a model

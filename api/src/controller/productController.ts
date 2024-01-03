@@ -1,6 +1,6 @@
 import Product from "../model/product";
 import { Request, Response } from "express";
-
+import { getProductById } from "../service/productService";
 // Get All products based on search
 export const searchProducts = async (req: Request, res: Response) => {
   try {
@@ -76,5 +76,21 @@ export const createProduct = async (req: Request, res: Response) => {
     res.status(201).json(savedProduct);
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
+  }
+};
+
+export const getProductFromCart = async (req: Request, res: Response) => {
+  try {
+    const { productId } = req.params;
+    const product = await getProductById(productId);
+
+    if (!product) {
+      return res.status(404).json({ error: "Product not found" });
+    }
+
+    return res.json(product);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ error: "Internal Server Error" });
   }
 };

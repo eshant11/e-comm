@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   LogoFacebook,
   LogoInstagram,
@@ -6,7 +6,6 @@ import {
   LogoLinkedin,
   PersonSharp,
   Heart,
-  Bag,
   Menu,
   Home,
   Grid,
@@ -14,6 +13,7 @@ import {
   Add,
   Remove,
   CaretBack,
+  Cart,
 } from "react-ionicons";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import {
@@ -28,6 +28,9 @@ const MobileNavbar = () => {
   const [isProductSubMenuOpen, setProductSubMenuOpen] = useState(false);
   const [signInDropdownVisible, setSignInDropdownVisible] = useState(false);
   const navigate = useNavigate();
+  const userCartItemCount = useAppSelector(
+    (state) => state.cart.cartDetails.product.length
+  );
 
   //To open cart conditionally
   const openCartHandler = () => {
@@ -88,9 +91,11 @@ const MobileNavbar = () => {
         </button>
 
         <button className="action-btn" onClick={() => openCartHandler()}>
-          <Bag color={"#00000"} title={""} />
+          <Cart color={"#00000"} title={""} />
 
-          <span className="count">0</span>
+          <span className="count">
+            {appState.isLoggedIn ? userCartItemCount : 0}
+          </span>
         </button>
 
         <button className="action-btn" onClick={() => navigate("/")}>

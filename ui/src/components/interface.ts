@@ -17,3 +17,8 @@ export interface UserData {
   confirm_Password: string;
   gender: string; // Define the valid options for gender
 }
+
+export interface UsercartDetails {
+  productId: string;
+  quantity: number;
+}

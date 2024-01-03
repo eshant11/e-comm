@@ -148,23 +148,17 @@ const Login = () => {
 
           <div className="social-login">
             <p>Or login with:</p>
-            <div className="login-container1">
-              <a className="google-login">
-                <GoogleLogin
-                  clientId="8325908074-23coorhho96dbaf179vk0ng3ne4v619s.apps.googleusercontent.com"
-                  buttonText=""
-                  onSuccess={onSuccess}
-                  onFailure={onFailure}
-                  cookiePolicy={"single_host_origin"}
-                  isSignedIn={false} //for default loggedin
-                  className="customGoogleButton"
-                  prompt="select_account" // to ask every time for a option for email
-                />
-              </a>
-              <a className="apple-login">
-                <img src="/Images/apple.png" alt="apple" />
-              </a>
-            </div>
+
+            <GoogleLogin
+              clientId="8325908074-23coorhho96dbaf179vk0ng3ne4v619s.apps.googleusercontent.com"
+              buttonText="Google"
+              onSuccess={onSuccess}
+              onFailure={onFailure}
+              cookiePolicy={"single_host_origin"}
+              isSignedIn={false} //for default loggedin
+              className="customGoogleButton"
+              prompt="select_account" // to ask every time for a option for email
+            />
           </div>
           <hr />
           <p className="signup-link">

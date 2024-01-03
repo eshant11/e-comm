@@ -20,6 +20,15 @@ export const getAllProducts = async () => {
   }
 };
 
+export const getProductById = async (productId: string) => {
+  try {
+    const product = await Product.findById(productId);
+    return product;
+  } catch (error) {
+    throw new Error("Error fetching product by ID");
+  }
+};
+
 // Create a new product in the database
 export const createProduct = async (productData: productDetails) => {
   try {
